@@ -18,15 +18,17 @@ export async function POST(req:NextRequest){
     await dbConnect()
     try {
 
-        const {title,admin_id,contributors}:{
+        const {user_id,title,contributors}:{
+            user_id: string,
             title: string,
-            admin_id: string,
             contributors:string[]
         } = await req.json()
 
+        console.log(contributors)
+
         const project = await Project.create({
+            user_id,
             title,
-            admin_id,
             contributors
         })
 

@@ -34,7 +34,6 @@ export async function POST(req:NextRequest){
             return NextResponse.json("Unauthorized: incorrect password",{status:401})
         }
         
-
         // create token
         const token = createToken(user._id)
         return NextResponse.json({user,token},{status:200})

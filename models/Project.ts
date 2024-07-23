@@ -10,7 +10,7 @@ const projectSchema = new Schema({
         type: String,
         require: true
     },
-    admin_id:{
+    user_id:{
         type: String,
         require: true
     },
