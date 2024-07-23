@@ -1,3 +1,4 @@
+import { createToken } from "@/lib/createToken";
 import dbConnect from "@/lib/dbConnect";
 import User from "@/models/User";
 import { genSalt, hash } from "bcrypt";
@@ -36,9 +37,16 @@ export async function POST(req:NextRequest) {
         const Hash = await hash(password,salt)
 
         // create user
-        const user = await User.create({email,password,name})
-        return NextResponse.json(user,{status:200})
+        const user = await User.create({
+            email,
+            password:Hash,
+            name
+        })
 
+        // create token
+        const token = createToken(user._id)
+
+        return NextResponse.json({user,token},{status:200})
 
     }catch(err:any){
         return NextResponse.json({error:err.message},{status:500})
