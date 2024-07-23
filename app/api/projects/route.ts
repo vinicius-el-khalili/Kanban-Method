@@ -9,12 +9,12 @@ export async function GET() {
         const projects = await Project.find({})
         return NextResponse.json(projects)
 
-    }catch(err:any){
+    } catch(err:any) {
         return NextResponse.json({error:err.message},{status:500})
     }
 }
 
-export async function POST(req:NextRequest){
+export async function POST(req:NextRequest) {
     await dbConnect()
     try {
 
@@ -23,8 +23,6 @@ export async function POST(req:NextRequest){
             title: string,
             contributors:string[]
         } = await req.json()
-
-        console.log(contributors)
 
         const project = await Project.create({
             user_id,

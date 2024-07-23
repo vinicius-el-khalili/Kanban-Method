@@ -3,7 +3,7 @@ export interface ITask extends Document {
     title: string,
     description: string,
     status: number,
-    project_id: ObjectId,
+    user_id: ObjectId,
     contributors:ObjectId[],
 }
 
@@ -20,12 +20,12 @@ const taskSchema = new Schema ({
         type: Number,
         require: true
     },
-    project_id:{
-        type: Schema.Types.ObjectId,
+    user_id:{
+        type: String,
         require: true,
     },
     contributors:{
-        type: [Schema.Types.ObjectId],
+        type: [String],
         require: true
     },
 })

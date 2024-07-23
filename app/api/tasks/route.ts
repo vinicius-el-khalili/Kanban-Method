@@ -16,11 +16,11 @@ export async function POST(req:NextRequest) {
     await dbConnect()
     try{ 
         
-        const {title,description,status,project_id,contributors}:{
+        const {title,description,status,user_id,contributors}:{
             title:string,
             description:string|undefined,
             status:number,
-            project_id:string,
+            user_id:string,
             contributors:string[]
         } = await req.json()
         
@@ -28,7 +28,7 @@ export async function POST(req:NextRequest) {
             title,
             description,
             status,
-            project_id,
+            user_id,
             contributors
         })
         

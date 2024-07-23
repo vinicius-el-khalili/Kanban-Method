@@ -1,36 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Api paths
 
-## Getting Started
+#### User Authentication
 
-First, run the development server:
+- Register: POST /api/users/signup
+- Login: POST /api/users/signin
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+#### Project Management
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+ - Get All Projects: GET /api/projects
+ - Get All Projects for a User: GET /api/projects/:userId
+ - Create Project: POST /api/projects
+ - Get Project by ID: GET /api/projects/:projectId
+ - Update Project: PUT /api/projects/:projectId
+ - Delete Project: DELETE /api/projects/:projectId
+ - Add Contributor to Project: POST /api/projects/:projectId/contributors
+ - Remove Contributor from Project: DELETE /api/projects/:projectId/contributors/:userId
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+#### Task Manager
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+ - Create Task: POST /api/tasks/
+ - Get All Tasks for a Project: GET /api/projects/:projectId/tasks
+ - Get Task by ID: GET /api/projects/:projectId/tasks/:taskId
+ - Update Task: PUT /api/projects/:projectId/tasks/:taskId
+ - Delete Task: DELETE /api/projects/:projectId/tasks/:taskId
