@@ -4,23 +4,23 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
     await dbConnect()
-    try {
+    try{
 
         const projects = await Project.find({})
         return NextResponse.json(projects)
 
-    } catch(err:any) {
+    }catch(err:any){
         return NextResponse.json({error:err.message},{status:500})
     }
 }
 
 export async function POST(req:NextRequest) {
     await dbConnect()
-    try {
+    try{
 
         const {user_id,title,contributors}:{
-            user_id: string,
-            title: string,
+            user_id:string,
+            title:string,
             contributors:string[]
         } = await req.json()
 
@@ -30,7 +30,7 @@ export async function POST(req:NextRequest) {
             contributors
         })
 
-        return NextResponse.json(project,{status:200})
+        return NextResponse.json(project)
 
     }catch(err:any){
         return NextResponse.json({error:err.message},{status:500})
