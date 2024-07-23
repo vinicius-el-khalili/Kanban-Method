@@ -18,9 +18,12 @@ Done:
  - Get All Projects by User: GET /api/projects/user/[userId]
  - Get Project by ID: GET /api/projects/project/[projectId]
 
+Doing:
+
+ - Update Project: PUT /api/projects/project/[projectId]
+
 To do:
 
- - Update Project: PUT /api/projects/:projectId
  - Delete Project: DELETE /api/projects/:projectId
  - Add Contributor to Project: POST /api/projects/:projectId/contributors
  - Remove Contributor from Project: DELETE /api/projects/:projectId/contributors/:userId
