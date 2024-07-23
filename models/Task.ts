@@ -1,11 +1,13 @@
-import { Document, Schema, model, models } from "mongoose";
+import { Document, ObjectId, Schema, model, models } from "mongoose";
 export interface ITask extends Document {
     title: string,
     description: string,
-    status: number
+    status: number,
+    project_id: ObjectId,
+    contributors:ObjectId[],
 }
 
-const taskSchema = new Schema({
+const taskSchema = new Schema ({
     title:{
         type: String,
         require: true
@@ -17,9 +19,17 @@ const taskSchema = new Schema({
     status:{
         type: Number,
         require: true
-    }
+    },
+    project_id:{
+        type: Schema.Types.ObjectId,
+        require: true,
+    },
+    contributors:{
+        type: [Schema.Types.ObjectId],
+        require: true
+    },
 })
 
-const Task = models.Product || model<ITask>("Task",taskSchema)
+const Task = models.Task || model<ITask>("Task",taskSchema)
 
 export default Task
