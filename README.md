@@ -8,9 +8,10 @@
 #### Project Management
 
  - Get All Projects: GET /api/projects
- - Get All Projects for a User: GET /api/projects/:userId
  - Create Project: POST /api/projects
- - Get Project by ID: GET /api/projects/:projectId
+ - Get All Projects for a User: GET /api/projects/user/[userId]
+ - Get Project by ID: GET /api/projects/project/[projectId]
+
  - Update Project: PUT /api/projects/:projectId
  - Delete Project: DELETE /api/projects/:projectId
  - Add Contributor to Project: POST /api/projects/:projectId/contributors
@@ -19,6 +20,8 @@
 #### Task Manager
 
  - Create Task: POST /api/tasks/
+
+
  - Get All Tasks for a Project: GET /api/projects/:projectId/tasks
  - Get Task by ID: GET /api/projects/:projectId/tasks/:taskId
  - Update Task: PUT /api/projects/:projectId/tasks/:taskId
