@@ -1,4 +1,4 @@
-import { Document, Schema, model } from "mongoose";
+import { Document, Schema, model, models } from "mongoose";
 export interface ITask extends Document {
     title: string,
     description: string,
@@ -12,14 +12,14 @@ const taskSchema = new Schema({
     },
     description:{
         type: String,
-        require: true
+        require: false
     },
     status:{
         type: Number,
-        require: false
+        require: true
     }
 })
 
-const Task = model<ITask>("Task",taskSchema)
+const Task = models.Product || model<ITask>("Task",taskSchema)
 
 export default Task
