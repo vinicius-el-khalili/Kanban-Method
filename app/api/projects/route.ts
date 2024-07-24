@@ -1,5 +1,5 @@
 import dbConnect from "@/lib/dbConnect";
-import Project from "@/models/Project";
+import Project, { ProjectSchema } from "@/models/Project";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
@@ -18,11 +18,7 @@ export async function POST(req:NextRequest) {
     await dbConnect()
     try{
 
-        const {user_id,title,contributors}:{
-            user_id:string,
-            title:string,
-            contributors:string[]
-        } = await req.json()
+        const {user_id,title,contributors}:ProjectSchema = await req.json()
 
         const project = await Project.create({
             user_id,
