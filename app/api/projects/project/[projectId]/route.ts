@@ -34,7 +34,7 @@ export async function PATCH(req:NextRequest,{params}:{params:{projectId:string}}
     }
 }
 
-export async function DELETE({params}:{params:{projectId:string}}) {
+export async function DELETE(req:NextRequest,{params}:{params:{projectId:string}}) {
     await dbConnect()
     try{
 
