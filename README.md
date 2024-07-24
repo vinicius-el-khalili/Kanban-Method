@@ -1,5 +1,3 @@
-### Api paths
-
 #### User Authentication
 
 - [x] Register: POST /api/users/signup
