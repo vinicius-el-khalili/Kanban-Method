@@ -26,15 +26,15 @@
 
 ### Context
 
-- [ ] Zustand Auth store
+- [x] Zustand Auth store
 - [ ] Zustand Project store
 - [ ] Zustand Task store
 
 ### Pages
 
-- [ ] Home page
-- [ ] Sign In page
-- [ ] Sign Up page
+- [x] Home page
+- [x] Sign In page
+- [x] Sign Up page
 - [ ] Layout
 - [ ] Dashboard
 - [ ] Project
