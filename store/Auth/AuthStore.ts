@@ -12,6 +12,7 @@ type AuthStore = {
     method:{
         signin:(email:string,password:string)=>Promise<number>
         signup:(params:{email:string,password:string,username:string})=>Promise<number>
+        refresh:(token:string)=>Promise<boolean>
     }
 }
 
@@ -94,6 +95,36 @@ export const useAuthStore = create<AuthStore>((set)=>({
 
             return 200
 
+        },
+        refresh: async(token)=>{
+
+            const res = await fetch("/api/users/refresh",{
+                method:"POST",
+                headers:{
+                    "Accept":"application/json",
+                    "Content-Type":"application/json",
+                },
+                body: JSON.stringify({token})
+            })
+
+            if(!res){ return false }
+            const status = res.status
+            if(status!=200){ return false }
+
+            const data:{
+                newToken: string,
+                user:UserSchema&MongoDocument
+            } = await res.json()
+
+            set((state)=>({
+                store:{...state.store,
+                    authenticated: true,
+                    token: data.newToken,
+                    user: data.user
+                }
+            }))
+
+            return true
         }
     }
 }))

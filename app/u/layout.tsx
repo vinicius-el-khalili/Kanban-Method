@@ -11,19 +11,25 @@ const Layout = ({children}:{
 }) => {
 
     const authenticated = useAuthStore((state)=>(state.store.authenticated))
+    const refresh = useAuthStore((state)=>(state.method.refresh))
     const router = useRouter()
 
     useEffect(()=>{
+        ;(async()=>{
 
-        if(authenticated){ return }
-        const cookieToken = parseCookies().token
-        if(!cookieToken){
-            router.push("/login")
-            return
-        }
-        // refresh token
-
-
+            if(authenticated){ return }
+            const cookieToken = parseCookies().token
+            if(!cookieToken){ 
+                router.push("/login")
+                return
+            }
+            const _refresh = await refresh(cookieToken)
+            if(!_refresh){ 
+                router.push("/login")
+                return
+            }
+            
+        })();
     },[])
 
     return (
