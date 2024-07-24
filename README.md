@@ -17,14 +17,14 @@ Done:
  - Create Project: POST /api/projects
  - Get All Projects by User: GET /api/projects/user/[userId]
  - Get Project by ID: GET /api/projects/project/[projectId]
+ - Update Project: PATCH /api/projects/project/[projectId]
 
 Doing:
 
- - Update Project: PUT /api/projects/project/[projectId]
+ - Delete Project: DELETE /api/projects/:projectId
 
 To do:
 
- - Delete Project: DELETE /api/projects/:projectId
  - Add Contributor to Project: POST /api/projects/:projectId/contributors
  - Remove Contributor from Project: DELETE /api/projects/:projectId/contributors/:userId
 
