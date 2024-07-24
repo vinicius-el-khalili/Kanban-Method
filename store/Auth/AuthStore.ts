@@ -38,8 +38,7 @@ export const useAuthStore = create<AuthStore>((set)=>({
                 const data = await res.json()
                 console.log(status,data)
                 return status
-            }
-
+            };
             console.log(200,"ok")
             
             const data:{
@@ -54,7 +53,7 @@ export const useAuthStore = create<AuthStore>((set)=>({
                     user: data.user
                 }
             }))
-            return status
+            return 200
 
         },
         signup: async ({email,username,password})=>{
@@ -75,7 +74,6 @@ export const useAuthStore = create<AuthStore>((set)=>({
                 console.log(status,data)
                 return status
             }
-            
             console.log(200,"ok")
 
             const data:{
@@ -91,7 +89,7 @@ export const useAuthStore = create<AuthStore>((set)=>({
                 }
             }))
 
-            return status
+            return 200
 
         }
     }

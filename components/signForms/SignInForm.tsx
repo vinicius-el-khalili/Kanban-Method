@@ -2,6 +2,7 @@
 
 import { useAuthStore } from "@/store/Auth/AuthStore";
 import { TextField, Button } from "@mui/material";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const SignInForm = () => {
@@ -9,11 +10,13 @@ const SignInForm = () => {
     const [email,set_email] = useState<string|null>(null)
     const [password,set_password] = useState<string|null>(null)
     const signIn = useAuthStore((state)=>(state.method.signin))
+    const router = useRouter()
 
     const handleSubmit = async ()=>{
 
         if(!email||!password){ return }
         const status = await signIn(email,password)
+        if(status==200){router.push("/u/dashboard")}
         
     }
 
