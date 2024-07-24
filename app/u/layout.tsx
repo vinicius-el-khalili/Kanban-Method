@@ -1,5 +1,6 @@
 "use client"
 
+import SideBar from "@/components/layout/Navbar/SideBar";
 import { useAuthStore } from "@/store/Auth/AuthStore";
 import { Box, Button } from "@mui/material";
 import { useRouter } from "next/navigation";
@@ -36,10 +37,13 @@ const Layout = ({children}:{
     return (
         <>
         {authenticated&&
-        <Box border="3px solid" height="100%">
-            <Button variant="contained" onClick={()=>signout(router)}>
-                Logout
-            </Button>
+        <Box height="100%">
+            <SideBar/>
+            <Box pl={30}>
+                <Button variant="contained" onClick={()=>signout(router)}>
+                    Logout
+                </Button>
+            </Box>
             {children}
         </Box>
         }

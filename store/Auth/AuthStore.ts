@@ -49,7 +49,7 @@ export const useAuthStore = create<AuthStore>((set)=>({
                 token: string,
                 user: UserSchema&MongoDocument
             } = await res.json()
-            
+        
             setCookie(undefined,"token",data.token)
             set((state)=>({
                 store:{...state.store,
