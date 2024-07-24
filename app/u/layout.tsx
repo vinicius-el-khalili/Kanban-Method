@@ -27,7 +27,7 @@ const Layout = ({children}:{
             }
             const _refresh = await refresh(cookieToken)
             if(!_refresh){ 
-                router.push("/login")
+                signout(router)
                 return
             }
             
@@ -39,9 +39,6 @@ const Layout = ({children}:{
         {authenticated&&
         <Box height="100%" pl={30}>
             <SideBar/>
-            <Button variant="contained" onClick={()=>signout(router)}>
-                Logout
-            </Button>
             {children}
         </Box>
         }

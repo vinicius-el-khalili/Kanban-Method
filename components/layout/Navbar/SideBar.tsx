@@ -1,13 +1,16 @@
 "use client"
 
 import { useAuthStore } from "@/store/Auth/AuthStore";
-import { Checklist, Home, MenuOpen, Person, TaskAlt } from "@mui/icons-material";
+import { Checklist, Home, Logout, MenuOpen, Person, TaskAlt } from "@mui/icons-material";
 import { Avatar, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Stack, Toolbar, Typography } from "@mui/material";
 import { blue, teal } from "@mui/material/colors";
+import { useRouter } from "next/navigation";
 
 const SideBar = () => {
 
     const user = useAuthStore((state)=>(state.store.user))
+    const signout = useAuthStore((state)=>(state.method.signout))
+    const router = useRouter()
 
     return (
         <>
@@ -22,20 +25,25 @@ const SideBar = () => {
                 <Stack justifyContent={"space-between"} height={"100%"}>
 
                     <List>
-                        <ListItem disablePadding>
-                            <ListItemButton>
+                        <ListItem>
+                            <ListItemButton onClick={()=>{console.log(user)}}>
                                 <ListItemIcon>
-                                    <Checklist/>
+                                    <Avatar sx={{bgcolor:teal[300],height:36,width:36}}>
+                                        {user?.username[0]}
+                                    </Avatar>
                                 </ListItemIcon>
-                                <ListItemText primary={"Projects"}/>
+                                <ListItemText primary={user?.username}/>
                             </ListItemButton>
                         </ListItem>
+                        <Divider/>
+                    </List>
+
+                    <List>
                         <ListItem disablePadding>
                             <ListItemButton>
-                                <ListItemIcon>
-                                    <TaskAlt/>
-                                </ListItemIcon>
-                                <ListItemText primary={"Tasks"}/>
+                                <Checklist/>
+                                <span style={{width:12}}/>
+                                <ListItemText primary={"Projects"}/>
                             </ListItemButton>
                         </ListItem>
                     </List>
@@ -43,13 +51,11 @@ const SideBar = () => {
                     <List>
                         <Divider/>
                         <ListItem disablePadding>
-                            <ListItemButton onClick={()=>{console.log(user)}}>
+                            <ListItemButton onClick={()=>{signout(router)}}>
                                 <ListItemIcon>
-                                    <Avatar sx={{bgcolor:teal[300]}}>
-                                        {user?.username[0]}
-                                    </Avatar>
+                                    <Logout/>
                                 </ListItemIcon>
-                                <ListItemText primary={user?.username}/>
+                                <ListItemText primary={"Logout"}/>
                             </ListItemButton>
                         </ListItem>
                     </List>

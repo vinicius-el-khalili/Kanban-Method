@@ -2,9 +2,10 @@
 
 import { useProjectStore } from "@/store/Projects/ProjectStore";
 import ProjectCard from "./ProjectCard";
-import { Button, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import { useAuthStore } from "@/store/Auth/AuthStore";
 import { useEffect } from "react";
+import CreateProject from "./CreateProject";
 
 const Projects = () => {
 
@@ -20,16 +21,15 @@ const Projects = () => {
 
     return (
         <>
-        <Button variant="contained" onClick={refresh}>refresh projects</Button>
-        <Button variant="contained" onClick={()=>create("Peach's Project 2")}>create project</Button>
-        <Typography variant="h5">Projects</Typography>
-        {projects&&projects.map((project,i)=>(
-            <ProjectCard key={`prj_crd${i}`} {...{project}}/>
-        ))}
-        <Typography variant="h5">Shared Projects</Typography>
-        {projects&&projects.map((project,i)=>(
-            <ProjectCard key={`prj_crd${i}`} {...{project}}/>
-        ))}
+        <Stack spacing={3} pt={4}>
+            <Typography variant="h4">Projects</Typography>
+            <CreateProject/>
+            <Stack spacing={1}>
+                {projects&&projects.map((project,i)=>(
+                    <ProjectCard key={`prj_crd${i}`} {...{project}}/>
+                )).reverse()}
+            </Stack>
+        </Stack>
         </>
     );
 }
