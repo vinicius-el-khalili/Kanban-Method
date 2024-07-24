@@ -8,20 +8,20 @@ export interface ITask extends Document {
 }
 
 const taskSchema = new Schema ({
+    user_id:{
+        type: String,
+        require: true,
+    },
+    project_id:{
+        type:String,
+        require: true
+    },
     title:{
         type: String,
         require: true
     },
     status:{
         type: Number,
-        require: true
-    },
-    user_id:{
-        type: String,
-        require: true
-    },
-    project_id:{
-        type:String,
         require: true
     },
     contributors:{

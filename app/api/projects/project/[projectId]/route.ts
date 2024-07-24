@@ -21,12 +21,13 @@ export async function PATCH(req:NextRequest,{params}:{params:{projectId:string}}
 
         const {projectId} = params
         
-        const {title,contributors}:{
+        const update:{
             title?:string,
+            status?:number
             contributors?:string[]
         } = await req.json()
 
-        const project = await Project.updateOne({_id:projectId},{$set:{title,contributors}})
+        const project = await Project.updateOne({_id:projectId},{$set:update})
         return NextResponse.json(project)
  
     }catch(err:any){

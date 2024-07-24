@@ -15,5 +15,25 @@ export async function GET(req:NextRequest,{params}:{params:{taskId:string}}){
         return NextResponse.json({error:err.message},{status:500})
     }
 
+}
+
+export async function PATCH(req:NextRequest,{params}:{params:{taskId:string}}) {
+    
+    const {taskId} = params
+    await dbConnect()
+    try{
+
+        const update:{
+            title?:string,
+            status?:number,
+            contributors?:string[]
+        } = await req.json()
+
+        const task = await Task.updateOne({_id:taskId},{$set:update})
+        return NextResponse.json(task)
+
+    }catch(err:any){
+        return NextResponse.json({error:err.message},{status:500})
+    }
 
 }
