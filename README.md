@@ -2,40 +2,25 @@
 
 #### User Authentication
 
-Done:
-
-- Register: POST /api/users/signup
-- Login: POST /api/users/signin
-
-To do:
+[x] Register: POST /api/users/signup
+[x] Login: POST /api/users/signin
 
 #### Project Management
 
-Done:
+ [x] Get All Projects: GET /api/projects
+ [x] Create Project: POST /api/projects
+ [x] Get All Projects by User: GET /api/projects/user/[userId]
+ [x] Get Project by ID: GET /api/projects/project/[projectId]
+ [x] Update Project: PATCH /api/projects/project/[projectId]
+ [x] Delete Project: DELETE /api/projects/project/[projectId]
 
- - Get All Projects: GET /api/projects
- - Create Project: POST /api/projects
- - Get All Projects by User: GET /api/projects/user/[userId]
- - Get Project by ID: GET /api/projects/project/[projectId]
- - Update Project: PATCH /api/projects/project/[projectId]
-
-Doing:
-
- - Delete Project: DELETE /api/projects/:projectId
-
-To do:
-
- - Add Contributor to Project: POST /api/projects/:projectId/contributors
- - Remove Contributor from Project: DELETE /api/projects/:projectId/contributors/:userId
 
 #### Task Manager
 
-Done:
+[x] Create Task: POST /api/tasks/
 
- - Create Task: POST /api/tasks/
+[...] Get tasks by Project: GET /api/projects/[projectId]/tasks
 
-To do:
- - Get All Tasks for a Project: GET /api/projects/:projectId/tasks
- - Get Task by ID: GET /api/projects/:projectId/tasks/:taskId
- - Update Task: PUT /api/projects/:projectId/tasks/:taskId
- - Delete Task: DELETE /api/projects/:projectId/tasks/:taskId
+[] Get Task by ID: GET /api/projects/:projectId/tasks/:taskId
+[] Update Task: PUT /api/projects/:projectId/tasks/:taskId
+[] Delete Task: DELETE /api/projects/:projectId/tasks/:taskId
