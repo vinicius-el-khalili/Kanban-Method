@@ -18,7 +18,7 @@ const Layout = ({children}:{
 
     useEffect(()=>{
         ;(async()=>{
-
+    
             if(authenticated){ return }
             const cookieToken = parseCookies().token
             if(!cookieToken){ 
