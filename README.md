@@ -18,7 +18,7 @@
 #### Task Manager
 
 - [x] Create Task: POST /api/tasks/
-- [...] Get tasks by Project: GET /api/projects/[projectId]/tasks
-- [] Get Task by ID: GET /api/projects/:projectId/tasks/:taskId
-- [] Update Task: PUT /api/projects/:projectId/tasks/:taskId
-- [] Delete Task: DELETE /api/projects/:projectId/tasks/:taskId
+- [ ] Get tasks by Project: GET /api/projects/[projectId]/tasks
+- [ ] Get Task by ID: GET /api/projects/:projectId/tasks/:taskId
+- [ ] Update Task: PUT /api/projects/:projectId/tasks/:taskId
+- [ ] Delete Task: DELETE /api/projects/:projectId/tasks/:taskId
