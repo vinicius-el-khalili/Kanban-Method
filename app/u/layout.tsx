@@ -37,13 +37,11 @@ const Layout = ({children}:{
     return (
         <>
         {authenticated&&
-        <Box height="100%">
-            {/*<SideBar/>*/}
-            <Box pl={30}>
-                <Button variant="contained" onClick={()=>signout(router)}>
-                    Logout
-                </Button>
-            </Box>
+        <Box height="100%" pl={30}>
+            <SideBar/>
+            <Button variant="contained" onClick={()=>signout(router)}>
+                Logout
+            </Button>
             {children}
         </Box>
         }

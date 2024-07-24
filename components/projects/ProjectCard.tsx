@@ -11,11 +11,7 @@ const ProjectCard = ({project}:{
         <>
         <Card variant="outlined">
             <CardHeader
-                avatar={
-                    <Avatar>
-                        U
-                    </Avatar>
-                }
+                avatar={<Avatar>U</Avatar>}
                 title={project.title}
                 subheader={project.user_id}
             />
