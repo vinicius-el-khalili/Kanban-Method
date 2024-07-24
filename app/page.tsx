@@ -15,8 +15,8 @@ const Home = () => {
       </Stack>
 
       <Stack spacing={2} alignItems="center" width={200}>
-        <Button size="large" fullWidth variant="outlined">Login</Button>
-        <Button size="large" fullWidth variant="text">Register</Button>
+        <Button size="large" fullWidth variant="outlined" href="/login">Login</Button>
+        <Button size="large" fullWidth variant="text" href="/register">Register</Button>
       </Stack>
 
     </Stack>
