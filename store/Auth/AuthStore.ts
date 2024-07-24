@@ -1,6 +1,7 @@
 import { UserSchema } from "@/models/User";
 import { MongoDocument } from "@/types/MongoDocument";
-import { setCookie } from "nookies";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { destroyCookie, setCookie } from "nookies";
 import { create } from "zustand";
 
 type AuthStore = {
@@ -13,6 +14,7 @@ type AuthStore = {
         signin:(email:string,password:string)=>Promise<number>
         signup:(params:{email:string,password:string,username:string})=>Promise<number>
         refresh:(token:string)=>Promise<boolean>
+        signout:(router:AppRouterInstance)=>void
     }
 }
 
@@ -125,6 +127,19 @@ export const useAuthStore = create<AuthStore>((set)=>({
             }))
 
             return true
+        },
+        signout: (router)=>{
+            
+            destroyCookie(undefined,"token")
+            set((state)=>({
+                store:{...state.store,
+                    authenticated: false,
+                    token: null,
+                    user: null
+                }
+            }))
+            router.push("/")
+
         }
     }
 }))

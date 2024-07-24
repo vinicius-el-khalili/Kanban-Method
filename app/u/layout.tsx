@@ -12,6 +12,7 @@ const Layout = ({children}:{
 
     const authenticated = useAuthStore((state)=>(state.store.authenticated))
     const refresh = useAuthStore((state)=>(state.method.refresh))
+    const signout = useAuthStore((state)=>(state.method.signout))
     const router = useRouter()
 
     useEffect(()=>{
@@ -36,6 +37,9 @@ const Layout = ({children}:{
         <>
         {authenticated&&
         <Box border="3px solid" height="100%">
+            <Button variant="contained" onClick={()=>signout(router)}>
+                Logout
+            </Button>
             {children}
         </Box>
         }
