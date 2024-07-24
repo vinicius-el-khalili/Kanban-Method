@@ -3,7 +3,7 @@
 import { ThemeProvider, createTheme } from "@mui/material";
 import { ReactNode } from "react";
 import { useThemeStore } from "@/store/Theme/ThemeStore";
-import { teal } from "@mui/material/colors";
+import { blue, deepOrange, green, red, teal } from "@mui/material/colors";
 
 
 const MyThemeProvider = ({children}:{
@@ -12,7 +12,7 @@ const MyThemeProvider = ({children}:{
 
     const mode = useThemeStore((state)=>(state.mode))
     const lightTheme = createTheme({
-        palette:{mode:"light",primary:teal},
+        palette:{mode:"light",primary:deepOrange},
         typography: {fontFamily:"monospace"}
     })
 

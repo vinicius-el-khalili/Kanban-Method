@@ -14,7 +14,7 @@ const Page = () => {
                 Kabin
             </Typography>
             <Stack width="100%" maxWidth={300} spacing={1}>
-                <Typography variant="h4" color="primary" textAlign="end" pb={2}>
+                <Typography variant="h4" textAlign="end" pb={2}>
                     New Account
                 </Typography>
                 <TextField {...{
