@@ -36,12 +36,10 @@ const Layout = ({children}:{
 
     return (
         <>
-        {authenticated&&
-        <Box height="100%" pl={30}>
-            <SideBar/>
-            {children}
+        <Box height="100%" pl={30}> 
+        <SideBar/>
+            {authenticated&&children}
         </Box>
-        }
         </>
     );
 }

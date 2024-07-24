@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 const SideBar = () => {
 
     const user = useAuthStore((state)=>(state.store.user))
+    const authenticated = useAuthStore((state)=>(state.store.authenticated))
     const signout = useAuthStore((state)=>(state.method.signout))
     const router = useRouter()
 
@@ -35,6 +36,7 @@ const SideBar = () => {
                                 <ListItemText primary={user?.username}/>
                             </ListItemButton>
                         </ListItem>
+                        <Typography>{authenticated?"true":"false"}</Typography>
                         <Divider/>
                     </List>
 

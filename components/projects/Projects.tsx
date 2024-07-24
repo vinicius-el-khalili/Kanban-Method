@@ -12,7 +12,6 @@ const Projects = () => {
     const authenticated = useAuthStore((state)=>(state.store.authenticated))
     const projects = useProjectStore((state)=>(state.store.projects))
     const refresh = useProjectStore((state)=>(state.method.refresh))
-    const create = useProjectStore((state)=>(state.method.create))
 
     useEffect(()=>{
         if(!authenticated){ return }

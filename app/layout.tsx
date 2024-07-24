@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Container, CssBaseline } from "@mui/material";
 import MyThemeProvider from "@/components/layout/MyThemeProvider";
+import SideBar from "@/components/layout/Navbar/SideBar";
 
 export const metadata: Metadata = {
   title: "Kanban Method",

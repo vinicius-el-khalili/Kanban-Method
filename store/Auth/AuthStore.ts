@@ -120,12 +120,13 @@ export const useAuthStore = create<AuthStore>((set)=>({
 
             set((state)=>({
                 store:{...state.store,
-                    authenticated: true,
-                    token: data.newToken,
-                    user: data.user
+                    authenticated:true,
+                    token:data.newToken,
+                    user:data.user
                 }
             }))
 
+            setCookie(undefined,"token",data.newToken)
             return true
         },
         signout: (router)=>{
