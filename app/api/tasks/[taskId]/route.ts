@@ -37,3 +37,18 @@ export async function PATCH(req:NextRequest,{params}:{params:{taskId:string}}) {
     }
 
 }
+
+export async function DELETE(req:NextRequest,{params}:{params:{taskId:string}}){
+
+    const {taskId} = params
+    await dbConnect()
+    try{
+
+        await Task.deleteOne({_id:taskId})
+        return NextResponse.json("ok")
+    
+    }catch(err:any){
+        return NextResponse.json({error:err.message},{status:500})
+    }
+
+}

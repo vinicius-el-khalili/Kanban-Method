@@ -18,4 +18,4 @@
 - [x] Create Task: POST /api/tasks/
 - [x] Get Task by ID: GET /api/tasks/[taskId]
 - [x] Update Task: PATCH /api/tasks/[taskId]
-- [ ] Delete Task: DELETE /api/tasks/[taskId]
+- [x] Delete Task: DELETE /api/tasks/[taskId]
