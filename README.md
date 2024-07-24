@@ -12,11 +12,11 @@
 - [x] Update Project: PATCH /api/projects/project/[projectId]
 - [x] Delete Project: DELETE /api/projects/project/[projectId]
 
+- [ ] Get Tasks by Project: GET /api/projects/project/[projectId]/tasks
 
-#### Task Manager
+#### Task Management
 
 - [x] Create Task: POST /api/tasks/
-- [ ] Get tasks by Project: GET /api/projects/[projectId]/tasks
-- [ ] Get Task by ID: GET /api/projects/:projectId/tasks/:taskId
-- [ ] Update Task: PUT /api/projects/:projectId/tasks/:taskId
-- [ ] Delete Task: DELETE /api/projects/:projectId/tasks/:taskId
+- [ ] Get Task by ID: GET /api/tasks/[taskId]
+- [ ] Update Task: PATCH /api/tasks/[taskId]
+- [ ] Delete Task: DELETE /api/tasks/[taskId]
