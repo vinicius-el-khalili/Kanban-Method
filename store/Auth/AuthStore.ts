@@ -1,5 +1,6 @@
 import { UserSchema } from "@/models/User";
 import { MongoDocument } from "@/types/MongoDocument";
+import { setCookie } from "nookies";
 import { create } from "zustand";
 
 type AuthStore = {
@@ -46,6 +47,7 @@ export const useAuthStore = create<AuthStore>((set)=>({
                 user: UserSchema&MongoDocument
             } = await res.json()
             
+            setCookie(undefined,"token",data.token)
             set((state)=>({
                 store:{...state.store,
                     authenticated: true,
@@ -81,6 +83,7 @@ export const useAuthStore = create<AuthStore>((set)=>({
                 user: UserSchema&MongoDocument
             } = await res.json()
 
+            setCookie(undefined,"token",data.token)
             set((state)=>({
                 store:{...state.store,
                     authenticated: true,

@@ -1,26 +1,39 @@
-import { House, Menu } from "@mui/icons-material";
-import { AppBar, Box, Drawer, IconButton, Toolbar, Typography } from "@mui/material";
-import { ReactNode } from "react";
+"use client"
+
+import { useAuthStore } from "@/store/Auth/AuthStore";
+import { Box, Button } from "@mui/material";
+import { useRouter } from "next/navigation";
+import { parseCookies } from "nookies";
+import { ReactNode, useEffect } from "react";
 
 const Layout = ({children}:{
     children:ReactNode
 }) => {
+
+    const authenticated = useAuthStore((state)=>(state.store.authenticated))
+    const router = useRouter()
+
+    useEffect(()=>{
+
+        if(authenticated){ return }
+        const cookieToken = parseCookies().token
+        if(!cookieToken){
+            router.push("/login")
+            return
+        }
+        // refresh token
+
+
+    },[])
+
     return (
-        <Box border="5px solid" height="100%">
-            <AppBar position="fixed">
-                <Toolbar>
-                    <IconButton>
-                        <Menu/>
-                    </IconButton>
-                </Toolbar>
-            </AppBar>
-            <Drawer variant="persistent" open>
-                <IconButton><House/></IconButton>
-                <IconButton><House/></IconButton>
-                <IconButton><House/></IconButton>
-            </Drawer>
+        <>
+        {authenticated&&
+        <Box border="3px solid" height="100%">
             {children}
         </Box>
+        }
+        </>
     );
 }
  
