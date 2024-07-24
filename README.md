@@ -30,19 +30,11 @@
 - [ ] Zustand Project store
 - [ ] Zustand Task store
 
-### Pages & Components
+### Pages
 
-- #### [ ] Home page
-    - [ ] minimalist stuff?
-- #### [ ] Sign In page
-    - [ ] Sign In form
-- #### [ ] Sign Up page
-    - [ ] Sign Up form
-- #### [ ] Layout
-    - [ ] Navbar/Drawer
-    - [ ] Containers
-- #### [ ] Dashboard
-    - [ ] Project Cards
-- #### [ ] Project
-    - [ ] Containers
-    - [ ] Task Cards
+- [ ] Home page
+- [ ] Sign In page
+- [ ] Sign Up page
+- [ ] Layout
+- [ ] Dashboard
+- [ ] Project
