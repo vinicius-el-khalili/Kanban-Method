@@ -1,8 +1,8 @@
 import dbConnect from "@/lib/dbConnect"
 import Task from "@/models/Task"
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 
-export async function GET({params}:{params:{projectId:string}}){
+export async function GET(req:NextRequest,{params}:{params:{projectId:string}}){
 
     await dbConnect()
     try{
