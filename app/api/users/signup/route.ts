@@ -1,6 +1,7 @@
 import { createToken } from "@/lib/createToken";
 import dbConnect from "@/lib/dbConnect";
-import User from "@/models/User";
+import User, { UserSchema } from "@/models/User";
+import { MongoDocument } from "@/types/MongoDocument";
 import { genSalt, hash } from "bcrypt";
 import { NextRequest, NextResponse } from "next/server";
 import validator from "validator";
@@ -9,14 +10,14 @@ export async function POST(req:NextRequest) {
     await dbConnect()
     try{
 
-        const {email,password,name}:{
+        const {email,password,username}:{
             email:string,
             password:string,
-            name:string
+            username:string
         } = await req.json()
 
         // input validation
-        if(!email||!password||!name){
+        if(!email||!password||!username){
             return NextResponse.json("Partial content: all fields must be filled",{status:206})
         }
         if(!validator.isEmail(email)){
@@ -37,16 +38,16 @@ export async function POST(req:NextRequest) {
         const Hash = await hash(password,salt)
 
         // create user
-        const user = await User.create({
+        const user:UserSchema&MongoDocument = await User.create({
             email,
             password:Hash,
-            name
+            username
         })
 
         // create token
         const token = createToken(user._id)
 
-        return NextResponse.json({user,token},{status:200})
+        return NextResponse.json({user,token})
 
     }catch(err:any){
         return NextResponse.json({error:err.message},{status:500})

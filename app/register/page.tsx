@@ -1,4 +1,5 @@
-import { Button, Stack, TextField, Typography } from "@mui/material";
+import SignUpForm from "@/components/signForms/SignUpForm";
+import { Stack, Typography } from "@mui/material";
 import Link from "next/link";
 
 const Page = () => {
@@ -17,24 +18,7 @@ const Page = () => {
                 <Typography variant="h4" textAlign="end" pb={2}>
                     New Account
                 </Typography>
-                <TextField {...{
-                    size:"small",
-                    label:"Email",
-                    variant:"standard"
-                }}/>
-                <TextField {...{
-                    size:"small",
-                    label:"Username",
-                    variant:"standard"
-                }}/>
-                <TextField {...{
-                    size:"small",
-                    label:"Password",
-                    variant:"standard",
-                }}/>
-                <Button variant="outlined" size="small">
-                    sign up
-                </Button>
+                <SignUpForm/>
                 <Typography variant="body2" pt={2}>
                     Already have an account? <Link href={"/login"} style={{textDecoration:"underline"}}>Sign in</Link>
                 </Typography>

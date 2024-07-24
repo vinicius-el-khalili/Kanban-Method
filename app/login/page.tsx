@@ -1,4 +1,4 @@
-import SignUpForm from "@/components/signForms/SignUpForm";
+import SignInForm from "@/components/signForms/SignInForm";
 import { Stack, Typography } from "@mui/material";
 import Link from "next/link";
 
@@ -17,7 +17,7 @@ const Page = () => {
                 <Typography variant="h4" textAlign="end" pb={2}>
                     Login
                 </Typography>
-                <SignUpForm/>
+                <SignInForm/>
                 <Typography variant="body2" pt={2}>
                     Don't have an account? <Link href={"/register"} style={{textDecoration:"underline"}}>Sign up</Link>
                 </Typography>

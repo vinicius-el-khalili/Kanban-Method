@@ -1,6 +1,7 @@
 import { createToken } from "@/lib/createToken";
 import dbConnect from "@/lib/dbConnect";
-import User from "@/models/User";
+import User, { UserSchema } from "@/models/User";
+import { MongoDocument } from "@/types/MongoDocument";
 import { compare } from "bcrypt";
 import { NextRequest, NextResponse } from "next/server";
 import validator from "validator";
@@ -23,7 +24,7 @@ export async function POST(req:NextRequest){
         }
 
         // check user existence
-        const user = await User.findOne({email})
+        const user:UserSchema&MongoDocument|null = await User.findOne({email})
         if(!user){
             return NextResponse.json("Forbidden: email not found",{status:403})
         }
@@ -36,7 +37,7 @@ export async function POST(req:NextRequest){
         
         // create token
         const token = createToken(user._id)
-        return NextResponse.json({user,token},{status:200})
+        return NextResponse.json({user,token})
 
     }catch(err:any){
         NextResponse.json({error:err.message},{status:500})
