@@ -27,7 +27,7 @@
 ### Context
 
 - [x] Zustand Auth store
-- [ ] Zustand Project store
+- [x] Zustand Project store
 - [ ] Zustand Task store
 
 ### Pages

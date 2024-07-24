@@ -1,16 +1,18 @@
 import { Document, ObjectId, Schema, model, models } from "mongoose";
-export interface IProject extends Document {
+
+export type ProjectSchema = {
+    user_id: string,
     title: string,
-    adminId: ObjectId,
-    contributors: ObjectId[]
+    contributors: string[]
 }
+export interface IProject extends Document,ProjectSchema {}
 
 const projectSchema = new Schema({
-    title:{
+    user_id:{
         type: String,
         require: true
     },
-    user_id:{
+    title:{
         type: String,
         require: true
     },

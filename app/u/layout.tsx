@@ -38,7 +38,7 @@ const Layout = ({children}:{
         <>
         {authenticated&&
         <Box height="100%">
-            <SideBar/>
+            {/*<SideBar/>*/}
             <Box pl={30}>
                 <Button variant="contained" onClick={()=>signout(router)}>
                     Logout
