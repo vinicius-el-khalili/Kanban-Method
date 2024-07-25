@@ -14,18 +14,19 @@ const KanbanGrid = () => {
         <Box {...{
             display:"grid",
             gridTemplateColumns:"repeat(3,1fr)",
-            height:"100%"
+            height:"100%",
+            gap:4
         }}>
             <Column 
-            title={<><HourglassBottom/></>} 
+            title={<>to do</>} 
             tasks={!tasks?[]:tasks.filter(task=>task.status==0)}/>
 
             <Column 
-            title={<><Autorenew/></>} 
+            title={<>doing</>} 
             tasks={!tasks?[]:tasks.filter(task=>task.status==1)}/>
 
             <Column 
-            title={<><Check/></>} 
+            title={<>done</>} 
             tasks={!tasks?[]:tasks.filter(task=>task.status==2)}/>
 
         </Box>
@@ -46,23 +47,26 @@ const Column = ({title,tasks}:{
             display:"grid",
             gridTemplateRows:"auto 1fr",
             height:"100%",
-            overflow:"hidden",
+            overflow:"hidden"
         }}>
+            <Paper>
             <Typography {...{
                 fontSize:"large",
                 justifyContent:"center",
                 textAlign:"center",
                 sx:{
                     p:.5,
+                    borderRadius:1,
                 }
             }}>
                 {title}
             </Typography>
+            </Paper>
 
             <Box {...{
                 sx:{overflowY:"scroll"},
                 height:"100%",
-                p:1,
+                pt:2,
                 display:"flex",
                 flexDirection:"column",
                 gap:.5

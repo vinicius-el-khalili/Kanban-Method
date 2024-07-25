@@ -12,7 +12,14 @@ const MyThemeProvider = ({children}:{
 
     const mode = useThemeStore((state)=>(state.mode))
     const lightTheme = createTheme({
-        palette:{mode:"light",primary:deepPurple},
+        palette:{
+            mode:"light",
+            primary:deepPurple,
+            background: {
+                default: "#eee",
+                paper: "#ddd"
+            }
+        },
         typography: {fontFamily:"monospace"}
     })
 
