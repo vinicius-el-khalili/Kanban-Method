@@ -44,7 +44,7 @@ const Column = ({title,tasks}:{
             display:"grid",
             gridTemplateRows:"auto 1fr",
             height:"100%",
-            overflow:"hidden"
+            overflow:"hidden",
         }}>
             <Typography {...{
                 fontSize:"large",
@@ -57,10 +57,12 @@ const Column = ({title,tasks}:{
             </Typography>
 
             <Box {...{
-                //border:"1px solid yellow",
                 sx:{overflowY:"scroll"},
                 height:"100%",
-                p:1
+                p:1,
+                display:"flex",
+                flexDirection:"column",
+                gap:.5
             }}>
                 {tasks&&tasks.map((task,i)=>(
                     <TaskCard key={`grdtskcrd${i}`} task={task}/>

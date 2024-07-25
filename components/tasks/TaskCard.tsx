@@ -8,7 +8,6 @@ const TaskCard = ({task}:{
 }) => {
 
     return (
-        <>
         <Card>
             <CardHeader
             avatar={<Avatar></Avatar>}
@@ -16,7 +15,6 @@ const TaskCard = ({task}:{
             subheader={["to do","doing","testing","done"][task.status]}
             />
         </Card>
-        </>
     );
 }
  
