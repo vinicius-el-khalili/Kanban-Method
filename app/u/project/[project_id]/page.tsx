@@ -6,9 +6,10 @@ const Page = ({ params }: { params: { project_id: string } }) => {
 
     return (
         <>
-        <Typography variant="h1">
-            {project_id}
+        <Typography variant="h4">
+            Project {project_id}
         </Typography>
+        
         </>
     );
 }
