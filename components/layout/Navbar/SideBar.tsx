@@ -42,7 +42,7 @@ const SideBar = () => {
 
                     <List>
                         <ListItem disablePadding>
-                            <ListItemButton>
+                            <ListItemButton onClick={()=>router.push("/u/dashboard")}>
                                 <Checklist/>
                                 <span style={{width:12}}/>
                                 <ListItemText primary={"Projects"}/>
