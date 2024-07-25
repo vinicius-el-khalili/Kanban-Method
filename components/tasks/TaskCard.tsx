@@ -16,9 +16,9 @@ const TaskCard = ({task,selectedTaskID,set_selectedTaskID}:{
     const refreshTasks = useTaskStore((state)=>(state.method.refresh))
 
     const setStatus = async(status:number)=>{
-        await patchTask(task._id,{status})
-        await refreshTasks(task.project_id)
+        await patchTask(task._id,{...task,status})
         set_selectedTaskID(null)
+        await refreshTasks(task.project_id)
     }
 
     return (

@@ -4,12 +4,12 @@
 
 # Back
 
-### User Authentication
+### User Authentication API
 
 - [x] Register: POST /api/users/signup
 - [x] Login: POST /api/users/signin
 
-### Project Management
+### Project Management API
 
 - [x] Get All Projects: GET /api/projects
 - [x] Create Project: POST /api/projects
@@ -19,14 +19,14 @@
 - [x] Delete Project: DELETE /api/projects/project/[projectID]
 - [x] Get Tasks by Project: GET /api/projects/project/[projectID]/tasks
 
-### Task Management
+### Task Management API
 
 - [x] Create Task: POST /api/tasks/
 - [x] Get Task by ID: GET /api/tasks/[taskID]
 - [x] Update Task: PATCH /api/tasks/[taskID]
 - [x] Delete Task: DELETE /api/tasks/[taskID]
 
-### Colaboration Management
+### Contribution Management
 
 - [x] Update User Schema
 - [x] Update User operations
@@ -34,7 +34,14 @@
 - [x] Update Project operations
 - [x] Update Task Schema
 - [x] Update Task operations
-- [ ] 
+
+- [x] Add/Remove contributer to Project: PATCH /api/tasks/[taskID]
+- [ ] Add/Remove contributer to Project: ProjectStore
+- [x] Add/Remove contributer to Task: PATCH /api/tasks/[taskID]
+- [ ] Add/Remove contributer to Task: ProjectStore
+
+- [ ] Add colaborator to Task
+- [ ] Remove colaborator from Task
 
 # Front
 
