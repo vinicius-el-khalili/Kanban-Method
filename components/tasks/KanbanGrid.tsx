@@ -3,6 +3,7 @@ import { useTaskStore } from "@/store/Tasks/TaskStore";
 import { MongoDocument } from "@/types/MongoDocument";
 import { Box, Paper, Stack, Typography } from "@mui/material";
 import TaskCard from "./TaskCard";
+import { Autorenew, Check, HourglassBottom } from "@mui/icons-material";
 
 const KanbanGrid = () => {
 
@@ -16,15 +17,15 @@ const KanbanGrid = () => {
             height:"100%"
         }}>
             <Column 
-            title={"Stuff"} 
+            title={<><HourglassBottom/></>} 
             tasks={!tasks?[]:tasks.filter(task=>task.status==0)}/>
 
             <Column 
-            title={"Doing"} 
+            title={<><Autorenew/></>} 
             tasks={!tasks?[]:tasks.filter(task=>task.status==1)}/>
 
             <Column 
-            title={"Done"} 
+            title={<><Check/></>} 
             tasks={!tasks?[]:tasks.filter(task=>task.status==2)}/>
 
         </Box>
@@ -35,9 +36,10 @@ const KanbanGrid = () => {
 export default KanbanGrid;
 
 const Column = ({title,tasks}:{
-    title:string,
+    title:JSX.Element,
     tasks:(TaskSchema&MongoDocument)[]|null,
 }) => {
+
     return (
 
         <Box {...{
@@ -49,6 +51,7 @@ const Column = ({title,tasks}:{
             <Typography {...{
                 fontSize:"large",
                 justifyContent:"center",
+                textAlign:"center",
                 sx:{
                     p:.5,
                 }
