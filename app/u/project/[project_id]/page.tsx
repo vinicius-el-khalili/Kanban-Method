@@ -19,7 +19,6 @@ const Page = ({ params }: { params: { project_id: string } }) => {
             await initializeProjectPageByID(project_id)
         })();
 
-
     },[])
 
     return (
