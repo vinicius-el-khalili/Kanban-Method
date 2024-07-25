@@ -3,7 +3,6 @@
 import Taeko from "@/components/layout/grids&layouts/Taeko";
 import CreateTask from "@/components/tasks/CreateTask";
 import KanbanGrid from "@/components/tasks/KanbanGrid";
-import Tasks from "@/components/tasks/Tasks";
 import { useProjectStore } from "@/store/Projects/ProjectStore";
 import { Box, Stack, Typography } from "@mui/material";
 import { useEffect } from "react";
