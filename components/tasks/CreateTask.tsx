@@ -14,28 +14,34 @@ const CreateTask = () => {
 
     const createTask = useTaskStore((state)=>(state.method.create))
     const refreshTasks = useTaskStore((state)=>(state.method.refresh))
-    const user_id = useAuthStore((state)=>(state.store.user?._id))
-    const project_id = useProjectStore((state)=>(state.store.selectedProject?._id))
+    const user = useAuthStore((state)=>(state.store.user))
+    const selectedProject = useProjectStore((state)=>(state.store.selectedProject))
 
     const handleSubmit = async (e:FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         
-        if(!user_id||!project_id){ 
+        if(!user||!selectedProject){ 
             return
         }
 
         const created = await createTask({
-            user_id,
-            project_id,
+            user_id: user._id,
+            project_id: selectedProject._id,
             title: input,
             status: 0,
-            contributors: [user_id]
+            contributors:[{
+                user_id: user._id,
+                username: user.username,
+                avatar: user.avatar,
+                color: user.color
+            }]
         })
 
         if(!created){ return }
-        await refreshTasks(project_id)
+        await refreshTasks(selectedProject._id)
         set_modal(false)
         set_input("")
+        
     }
 
     return (

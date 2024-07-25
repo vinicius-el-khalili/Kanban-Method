@@ -1,11 +1,12 @@
 import { Document, ObjectId, Schema, model, models } from "mongoose";
+import { Contributor, contributorSchema } from "./Project";
 
 export type TaskSchema = {
     user_id: string,
     project_id: string
     title: string,
     status: number,
-    contributors:string[],
+    contributors:Contributor[],
 }
 
 export interface ITask extends Document,TaskSchema {}
@@ -28,7 +29,7 @@ const taskSchema = new Schema ({
         require: true
     },
     contributors:{
-        type: [String],
+        type: [contributorSchema],
         require: true
     },
 })

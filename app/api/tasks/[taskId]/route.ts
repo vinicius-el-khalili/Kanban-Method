@@ -1,5 +1,5 @@
 import dbConnect from "@/lib/dbConnect";
-import Task from "@/models/Task";
+import Task, { TaskSchema } from "@/models/Task";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req:NextRequest,{params}:{params:{taskId:string}}){
@@ -23,13 +23,8 @@ export async function PATCH(req:NextRequest,{params}:{params:{taskId:string}}) {
     await dbConnect()
     try{
 
-        const update:{
-            title?:string,
-            status?:number,
-            contributors?:string[]
-        } = await req.json()
-
-        const task = await Task.updateOne({_id:taskId},{$set:update})
+        const updatedTask:TaskSchema = await req.json()
+        const task = await Task.updateOne({_id:taskId},{$set:updatedTask})
         return NextResponse.json(task)
 
     }catch(err:any){

@@ -26,12 +26,15 @@
 - [x] Update Task: PATCH /api/tasks/[taskID]
 - [x] Delete Task: DELETE /api/tasks/[taskID]
 
-### Friend Group Management
+### Colaboration Management
 
-- [ ... ] Update User Schema
-- [ ] Add friend by username: PATCH /api/users/[userID]/
-- [ ] Remove friend by username: PATCH /api/users/[userID]/
-- [ ] Add/Remove collaborator at Project: PATCH /api/projects/project/[projectID]
+- [x] Update User Schema
+- [x] Update User operations
+- [x] Update Project Schema
+- [x] Update Project operations
+- [x] Update Task Schema
+- [x] Update Task operations
+- [ ] 
 
 # Front
 

@@ -7,7 +7,7 @@ export type Contributor = {
     color: number,
 }
 
-const contributorSchema = new Schema({
+export const contributorSchema = new Schema({
     user_id: {
         type: String,
         require: true

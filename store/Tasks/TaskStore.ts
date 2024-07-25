@@ -11,14 +11,7 @@ type TaskStore = {
     method: {
         refresh:(project_id:string)=>Promise<void>
         create:(newTask:TaskSchema)=>Promise<boolean>
-        patch:(
-            _id:string,
-            updates:{
-                title?:string,
-                status?:number,
-                contributors?:string[]
-            }
-        )=>Promise<boolean>
+        patch:(_id:string,updatedTask:TaskSchema)=>Promise<boolean>
         delete:(_id:string)=>Promise<boolean>
     }
 }
@@ -63,7 +56,7 @@ export const useTaskStore = create<TaskStore>()((set,get)=>({
             return true
 
         },
-        patch:async(_id,updates)=>{
+        patch:async(_id,updatedTask)=>{
 
             const res = await fetch(`/api/tasks/${_id}`,{
                 method:"PATCH",
@@ -71,7 +64,7 @@ export const useTaskStore = create<TaskStore>()((set,get)=>({
                     "Accept":"application/json",
                     "Content-Type":"application/json",
                 },
-                body: JSON.stringify(updates)
+                body: JSON.stringify(updatedTask)
             })
             if(!res||res.status!=200){ return false }
             return true
