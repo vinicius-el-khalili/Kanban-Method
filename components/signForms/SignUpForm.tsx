@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const SignUpForm = () => {
 
-    const [email,set_email] = useState<string|null>(null)
+    const [login,set_login] = useState<string|null>(null)
     const [password,set_password] = useState<string|null>(null)
     const [username,set_username] = useState<string|null>(null)
     const signUp = useAuthStore((state)=>(state.method.signup))
@@ -15,8 +15,8 @@ const SignUpForm = () => {
 
     const handleSubmit = async () => {
 
-        if(!email||!password||!username){ return }
-        const status = await signUp({email,password,username})
+        if(!login||!password||!username){ return }
+        const status = await signUp({login,password,username})
         if(status==200){router.push("/u/dashboard")}
         
     }
@@ -27,8 +27,8 @@ const SignUpForm = () => {
             size:"small",
             label:"Email",
             variant:"standard",
-            value:email?email:"",
-            onChange:(e)=>{set_email(e.target.value)}
+            value:login?login:"",
+            onChange:(e)=>{set_login(e.target.value)}
         }}/>
         <TextField {...{
             size:"small",

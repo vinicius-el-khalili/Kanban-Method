@@ -3,7 +3,7 @@ import { Document, Schema, model, models } from "mongoose";
 export type ProjectSchema = {
     user_id: string,
     title: string,
-    contributors: [string][]
+    contributors: string[]
 }
 export interface IProject extends Document,ProjectSchema {}
 
