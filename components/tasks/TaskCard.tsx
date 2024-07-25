@@ -2,9 +2,10 @@ import { TaskSchema } from "@/models/Task";
 import { useTaskStore } from "@/store/Tasks/TaskStore";
 import { MongoDocument } from "@/types/MongoDocument";
 import { Autorenew, Check, Delete, HourglassBottom } from "@mui/icons-material";
-import { Accordion, AccordionActions, AccordionSummary, Avatar, Box, Button, Card, CardHeader, Divider, IconButton, Stack, Typography } from "@mui/material";
+import { Accordion, AccordionActions, AccordionDetails, AccordionSummary, Avatar, AvatarGroup, Box, Button, Card, CardHeader, Divider, IconButton, Stack, Typography } from "@mui/material";
 import TaskDeleteButton from "./TaskCardButtons/TaskDeleteButton";
 import { Dispatch, SetStateAction } from "react";
+import { blue, green, pink } from "@mui/material/colors";
 
 const TaskCard = ({task,selectedTaskID,set_selectedTaskID}:{
     task:TaskSchema&MongoDocument
@@ -36,42 +37,59 @@ const TaskCard = ({task,selectedTaskID,set_selectedTaskID}:{
             <AccordionSummary>
                 <Box {...{
                     display:"grid",
-                    gridTemplateColumns:"1fr auto",
+                    gridTemplateColumns:"1fr",
+                    gridTemplateRows:"auto auto",
                     width:"100%"
                 }}>
                     <Box {...{
                         display:"flex",
                         alignItems:"center",
+                        justifyContent:"flex-start",
+                        gap:1.8
                     }}>
-                        <Typography>{task.title}</Typography>
+
+                        <Box {...{
+                            display:"flex",
+                            alignItems:"flex-start",
+                            height:"100%",
+                            pt:.2,
+                        }}>
+                            {task.status==0&&
+                            <HourglassBottom {...{
+                                color:"inherit",
+                                sx:{height:18,width:18,opacity:.5},
+                            }}/>}
+                            {task.status==1&&
+                            <Autorenew {...{
+                                color:"warning",
+                                sx:{height:18,width:18},
+                            }}/>}
+                            {task.status==2&&
+                            <Check {...{
+                                color:"success",
+                                sx:{height:18,width:18},
+                            }}/>}
+                        </Box>
+
+                        <Typography variant="body2">
+                            {task.title}
+                        </Typography>
+
                     </Box>
-                    <Box {...{
-                        display:"flex",
-                        alignItems:"center",
-                    }}>
-
-                        {task.status==0&&
-                        <HourglassBottom {...{
-                            color:"inherit",
-                            sx:{height:18,width:18,opacity:.5},
-                        }}/>}
-
-                        {task.status==1&&
-                        <Autorenew {...{
-                            color:"warning",
-                            sx:{height:18,width:18},
-                        }}/>}
-
-                        {task.status==2&&
-                        <Check {...{
-                            color:"success",
-                            sx:{height:18,width:18},
-                        }}/>}
-
+                    <Box {...{pt:1}}>
+                        <AvatarGroup>
+                            {task.contributors.map((c,i)=>(
+                                <Avatar 
+                                key={`${task._id}${c.user_id}`}
+                                sx={{width:24,height:24,bgcolor:blue[500]}}>
+                                    {c.username[0]}
+                                </Avatar>
+                            ))}
+                        </AvatarGroup>
                     </Box>
                 </Box>
             </AccordionSummary>
-
+            
             <AccordionActions sx={{justifyContent:"center"}}>
 
                 <TaskDeleteButton {...{
