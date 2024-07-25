@@ -76,7 +76,7 @@ const Column = ({title,tasks,selectedTaskID,set_selectedTaskID}:{
             <Box {...{
                 sx:{overflowY:"scroll"},
                 height:"100%",
-                pt:2,
+                pt:.4,
                 display:"flex",
                 flexDirection:"column",
                 gap:.5

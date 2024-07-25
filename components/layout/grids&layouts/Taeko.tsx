@@ -1,11 +1,17 @@
-import { Box, Stack, Typography } from "@mui/material";
+"use client"
+
+import { useProjectStore } from "@/store/Projects/ProjectStore";
+import { AvatarGroup, Box, Stack, Typography } from "@mui/material";
 import { ReactNode } from "react";
 
 const Taeko = ({children,title,buttons}:{
     children:ReactNode
-    title:string,
+    title:JSX.Element,
     buttons:JSX.Element[]
 }) => {
+
+    const selectedProject = useProjectStore((state)=>(state.store.selectedProject))
+
     return (
         <>
         <Box {...{
@@ -15,7 +21,7 @@ const Taeko = ({children,title,buttons}:{
             sx:{
                 overflowY:"hidden"
             },
-            pt:2,pb:2
+            pt:4,pb:2
         }}>
 
             <Typography {...{
@@ -26,6 +32,8 @@ const Taeko = ({children,title,buttons}:{
             }}>
                 {title}
             </Typography>
+
+
 
             <Stack {...{
                 direction:"row",
