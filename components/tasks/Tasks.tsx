@@ -12,14 +12,14 @@ const Tasks = () => {
     const refreshTasks = useTaskStore((state)=>(state.method.refresh))
     const selectedProject = useProjectStore((state)=>(state.store.selectedProject))
 
-    useEffect(()=>{
-        (async()=>{
-
-            if(!selectedProject){ return }
-            await refreshTasks(selectedProject._id)
-
-        })();
-    },[])
+    //useEffect(()=>{
+    //    (async()=>{
+//
+    //        if(!selectedProject){ return }
+    //        await refreshTasks(selectedProject._id)
+//
+    //    })();
+    //},[])
 
     return (
         <>

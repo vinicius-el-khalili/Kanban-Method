@@ -11,11 +11,13 @@ const ProjectCard = ({project}:{
 }) => {
 
     const router = useRouter()
-    const selectProject = useProjectStore((state)=>(state.method.select))
+    const initializeProjectPageByID = useProjectStore((state)=>(state.method.initializeProjectPageByID))
 
-    const onClick = ()=>{
-        selectProject(project)
+    const onClick = async()=>{
+
+        await initializeProjectPageByID(project._id)
         router.push(`/u/project/${project._id}`)
+        
     }
 
     return (
