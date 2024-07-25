@@ -11,8 +11,8 @@ type AuthStore = {
         user:UserSchema&MongoDocument|null
     },
     method:{
-        signin:(email:string,password:string)=>Promise<number>
-        signup:(params:{email:string,password:string,username:string})=>Promise<number>
+        signin:(login:string,password:string)=>Promise<number>
+        signup:(params:{login:string,password:string,username:string})=>Promise<number>
         refresh:(token:string)=>Promise<boolean>
         signout:(router:AppRouterInstance)=>void
     }
@@ -25,7 +25,7 @@ export const useAuthStore = create<AuthStore>((set)=>({
         user:null
     },
     method:{
-        signin: async (email,password)=>{
+        signin: async (login,password)=>{
 
             const res = await fetch("/api/users/signin",{
                 method:"POST",
@@ -33,7 +33,7 @@ export const useAuthStore = create<AuthStore>((set)=>({
                     "Accept":"application/json",
                     "Content-Type":"application/json",
                 },
-                body: JSON.stringify({email,password})
+                body: JSON.stringify({login,password})
             })
 
             if(!res){ return 0 }
@@ -61,7 +61,7 @@ export const useAuthStore = create<AuthStore>((set)=>({
             return 200
 
         },
-        signup: async ({email,username,password})=>{
+        signup: async ({login,username,password})=>{
 
             const res = await fetch("/api/users/signup",{
                 method:"POST",
@@ -69,7 +69,7 @@ export const useAuthStore = create<AuthStore>((set)=>({
                     "Accept":"application/json",
                     "Content-Type":"application/json",
                 },
-                body: JSON.stringify({email,username,password})
+                body: JSON.stringify({login,username,password})
             })
 
             if(!res){ return 0 }
