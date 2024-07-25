@@ -2,7 +2,6 @@
 
  - https://kanban-method.vercel.app/
 
-# Back
 
 ### User Authentication API
 
@@ -23,29 +22,10 @@
 
 - [x] Create Task: POST /api/tasks/
 - [x] Get Task by ID: GET /api/tasks/[taskID]
-- [x] Update Task: PATCH /api/tasks/[taskID]
+- [x] Patch Task: PATCH /api/tasks/[taskID]
 - [x] Delete Task: DELETE /api/tasks/[taskID]
 
-### Contribution Management
-
-- [x] Update User Schema
-- [x] Update User operations
-- [x] Update Project Schema
-- [x] Update Project operations
-- [x] Update Task Schema
-- [x] Update Task operations
-
-- [x] Add/Remove contributer to Project: PATCH /api/tasks/[taskID]
-- [ ] Add/Remove contributer to Project: ProjectStore
-- [x] Add/Remove contributer to Task: PATCH /api/tasks/[taskID]
-- [ ] Add/Remove contributer to Task: ProjectStore
-
-- [ ] Add colaborator to Task
-- [ ] Remove colaborator from Task
-
-# Front
-
-### Context
+### Zustand Contexts
 
 - [x] Zustand Auth store
 - [x] Zustand Project store
@@ -59,3 +39,25 @@
 - [x] Layouts
 - [x] Dashboard page
 - [x] Project page
+
+### Contribution Management: Update Models & Schemas
+
+- [x] Update User Schema
+- [x] Update User operations
+- [x] Update Project Schema
+- [x] Update Project operations
+- [x] Update Task Schema
+- [x] Update Task operations
+
+### Contribution Management: Features
+
+- [x] Add/Remove contributor to Project: PATCH /api/tasks/[taskID]
+- [ ] Add/Remove contributor to Project: ProjectStore
+- [ ] Add/Remove contributor to Project: UI
+- [x] Add/Remove contributor to Task: PATCH /api/tasks/[taskID]
+- [ ] Add/Remove contributor to Task: ProjectStore
+- [ ] Add/Remove contributor to Task: UI
+- [ ] Add/Remove contributor to Task: PATCH /api/tasks/[taskID]
+- [ ] Add/Remove contributor to User friends list: PATCH /api/users/[userID]
+- [ ] Add/Remove contributor to User friends list: User Store
+- [ ] Add/Remove contributor to User friends list: UI
