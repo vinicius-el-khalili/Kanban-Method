@@ -59,7 +59,12 @@ export const useProjectStore = create<ProjectStore>()((set,get)=>({
             const newProject:ProjectSchema={
                 user_id: user._id,
                 title,
-                contributors: [user._id]
+                contributors: [{
+                    user_id: user._id,
+                    username: user.username,
+                    avatar: user.avatar,
+                    color: user.color
+                }]
             }
             
             const res = await fetch("/api/projects",{

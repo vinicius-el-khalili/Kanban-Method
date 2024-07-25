@@ -30,7 +30,7 @@ const ProjectCard = ({project}:{
             <Box sx={{ width: "100%" }}>
                 <Card variant="outlined" sx={{width:"100%"}}>
                     <CardHeader
-                        avatar={<Avatar>{project.contributors[0][1][0]}</Avatar>}
+                        avatar={<Avatar>{project.contributors[0].username[0]}</Avatar>}
                         title={project.title}
                         />
                 </Card>

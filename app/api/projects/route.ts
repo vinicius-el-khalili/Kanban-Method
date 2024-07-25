@@ -19,10 +19,13 @@ export async function POST(req:NextRequest) {
     try{
 
         const newProject:ProjectSchema = await req.json()
+        console.log(newProject)
         const project = await Project.create(newProject)
+        console.log("first")
         return NextResponse.json(project)
 
     }catch(err:any){
         return NextResponse.json({error:err.message},{status:500})
     }
+
 }

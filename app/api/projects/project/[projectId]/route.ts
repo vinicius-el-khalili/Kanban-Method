@@ -1,5 +1,5 @@
 import dbConnect from "@/lib/dbConnect";
-import Project from "@/models/Project";
+import Project, { Contributor } from "@/models/Project";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req:NextRequest,{params}:{params:{projectId:string}}){
@@ -22,9 +22,9 @@ export async function PATCH(req:NextRequest,{params}:{params:{projectId:string}}
         const {projectId} = params
         
         const update:{
-            title?:string,
+            title?:string
             status?:number
-            contributors?:string[]
+            contributors?:Contributor[]
         } = await req.json()
 
         const project = await Project.updateOne({_id:projectId},{$set:update})

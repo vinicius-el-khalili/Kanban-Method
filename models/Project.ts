@@ -1,10 +1,37 @@
 import { Document, Schema, model, models } from "mongoose";
 
+export type Contributor = {
+    user_id: string,
+    username: string,
+    avatar: number,
+    color: number,
+}
+
+const contributorSchema = new Schema({
+    user_id: {
+        type: String,
+        require: true
+    },
+    username: {
+        type: String,
+        require: true
+    },
+    avatar: {
+        type: Number,
+        require: true
+    },
+    color: {
+        type: Number,
+        require: true
+    }
+})
+
 export type ProjectSchema = {
     user_id: string,
     title: string,
-    contributors: string[]
+    contributors: Contributor[]
 }
+
 export interface IProject extends Document,ProjectSchema {}
 
 const projectSchema = new Schema({
@@ -17,11 +44,10 @@ const projectSchema = new Schema({
         require: true
     },
     contributors:{
-        type: [String],
+        type: [contributorSchema],
         require: true
     },
 })
-
 
 const Project = models.Project || model<IProject>("Project",projectSchema)
 
