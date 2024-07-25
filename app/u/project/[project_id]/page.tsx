@@ -1,9 +1,11 @@
 "use client"
 
+import Taeko from "@/components/layout/grids&layouts/Taeko";
 import CreateTask from "@/components/tasks/CreateTask";
+import KanbanGrid from "@/components/tasks/KanbanGrid";
 import Tasks from "@/components/tasks/Tasks";
 import { useProjectStore } from "@/store/Projects/ProjectStore";
-import { Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { useEffect } from "react";
 
 const Page = ({ params }: { params: { project_id: string } }) => {
@@ -25,13 +27,13 @@ const Page = ({ params }: { params: { project_id: string } }) => {
 
     return (
         <>
-        <Stack spacing={3} pt={4}>
-            <Typography variant="h4">
-                <span style={{opacity:.4}}>{`Projects > `}</span>
-                {`${selectedProject?selectedProject.title:""}`}</Typography>
-            <CreateTask/>
-            <Tasks/>
-        </Stack>
+        <Taeko 
+        title={`Projects > ${selectedProject?selectedProject.title:""}`}
+        buttons={[<CreateTask/>]}
+        >
+            
+            <KanbanGrid/>
+        </Taeko>
         </>
     );
 }

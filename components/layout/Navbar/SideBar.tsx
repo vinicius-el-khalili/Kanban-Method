@@ -36,7 +36,6 @@ const SideBar = () => {
                                 <ListItemText primary={user?.username}/>
                             </ListItemButton>
                         </ListItem>
-                        <Typography>{authenticated?"true":"false"}</Typography>
                         <Divider/>
                     </List>
 
