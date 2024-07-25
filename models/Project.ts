@@ -3,7 +3,7 @@ import { Document, Schema, model, models } from "mongoose";
 export type ProjectSchema = {
     user_id: string,
     title: string,
-    contributors: [string,string][]
+    contributors: [string][]
 }
 export interface IProject extends Document,ProjectSchema {}
 
@@ -17,7 +17,7 @@ const projectSchema = new Schema({
         require: true
     },
     contributors:{
-        type: [[String,String]],
+        type: [String],
         require: true
     },
 })

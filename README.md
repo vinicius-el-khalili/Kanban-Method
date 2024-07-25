@@ -22,19 +22,26 @@
 - [x] Update Task: PATCH /api/tasks/[taskId]
 - [x] Delete Task: DELETE /api/tasks/[taskId]
 
+### Contributor Management
+
+- [ ] Get detailed Project info by user: GET /api/projects/user/[userId]
+- [ ] 
+- [ ] 
+- [ ] 
+
 # Front
 
 ### Context
 
 - [x] Zustand Auth store
 - [x] Zustand Project store
-- [ ] Zustand Task store
+- [x] Zustand Task store
 
 ### Pages
 
 - [x] Home page
 - [x] Sign In page
 - [x] Sign Up page
-- [ ] Layout
-- [ ] Dashboard
-- [ ] Project
+- [x] Layouts
+- [x] Dashboard page
+- [x] Project page
