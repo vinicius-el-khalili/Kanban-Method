@@ -10,21 +10,18 @@ export async function POST(req:NextRequest){
     await dbConnect()
     try{
 
-        const {email,password}:{
-            email:string,
+        const {login,password}:{
+            login:string,
             password:string
         } = await req.json()
 
         // input validation
-        if(!email||!password){
+        if(!login||!password){
             return NextResponse.json("Partial content: all fields must be filled",{status:206})
-        }
-        if(!validator.isEmail(email)){
-            return NextResponse.json("Precondition failed: invalid email",{status:412})
         }
 
         // check user existence
-        const user:UserSchema&MongoDocument|null = await User.findOne({email})
+        const user:UserSchema&MongoDocument|null = await User.findOne({login})
         if(!user){
             return NextResponse.json("Forbidden: email not found",{status:403})
         }
