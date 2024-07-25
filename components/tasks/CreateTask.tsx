@@ -43,7 +43,9 @@ const CreateTask = () => {
         <Button
         onClick={()=>set_modal(true)}
         startIcon={<Add/>}
-        variant="outlined">
+        variant="contained"
+        color="inherit"
+        >
             Create task
         </Button>
         <Modal 

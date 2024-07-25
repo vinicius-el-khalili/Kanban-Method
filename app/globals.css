@@ -28,6 +28,7 @@ body {
   height: 100vh;
   height: 100svh;
   height: 100dvh;
+  scrollbar-width: none;
 }
 
 * {
@@ -35,6 +36,8 @@ body {
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+ */
   user-select: none; /* Standard */
+  -webkit-scrollbar { display: none; };
+  scrollbar-width: none;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

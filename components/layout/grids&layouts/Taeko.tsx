@@ -11,12 +11,11 @@ const Taeko = ({children,title,buttons}:{
         <Box {...{
             display:"grid",
             gridTemplateRows:"auto auto 1fr",
-            //border:"1px dashed yellow",
             height:"100%",
             sx:{
                 overflowY:"hidden"
             },
-            pt:2
+            pt:2,pb:2
         }}>
 
             <Typography {...{
@@ -31,15 +30,14 @@ const Taeko = ({children,title,buttons}:{
             <Stack {...{
                 direction:"row",
                 spacing:2,
-                pb:2,
+                pb:2,pt:2
             }}>
-                {buttons}
                 {buttons}
             </Stack>
             
             <Box {...{
-                border:"3px solid green",
-                overflow:"hidden"
+                overflow:"hidden",
+                pt:2
             }}>
                 {children}
             </Box>

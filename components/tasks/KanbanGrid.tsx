@@ -1,7 +1,7 @@
 import { TaskSchema } from "@/models/Task";
 import { useTaskStore } from "@/store/Tasks/TaskStore";
 import { MongoDocument } from "@/types/MongoDocument";
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Paper, Stack, Typography } from "@mui/material";
 import TaskCard from "./TaskCard";
 
 const KanbanGrid = () => {
@@ -41,34 +41,27 @@ const Column = ({title,tasks}:{
     return (
 
         <Box {...{
-            border:"1px solid red",
-            p:2,
             display:"grid",
             gridTemplateRows:"auto 1fr",
             height:"100%",
             overflow:"hidden"
         }}>
             <Typography {...{
-                variant:"h6" ,
-                textAlign:"center",
+                fontSize:"large",
+                justifyContent:"center",
                 sx:{
-                    pb:2
+                    p:.5,
                 }
             }}>
                 {title}
             </Typography>
 
             <Box {...{
-                border:"1px solid yellow",
+                //border:"1px solid yellow",
                 sx:{overflowY:"scroll"},
-                height:"100%"
+                height:"100%",
+                p:1
             }}>
-                {tasks&&tasks.map((task,i)=>(
-                    <TaskCard key={`grdtskcrd${i}`} task={task}/>
-                ))}
-                {tasks&&tasks.map((task,i)=>(
-                    <TaskCard key={`grdtskcrd${i}`} task={task}/>
-                ))}
                 {tasks&&tasks.map((task,i)=>(
                     <TaskCard key={`grdtskcrd${i}`} task={task}/>
                 ))}

@@ -31,7 +31,6 @@ const Page = ({ params }: { params: { project_id: string } }) => {
         title={`Projects > ${selectedProject?selectedProject.title:""}`}
         buttons={[<CreateTask/>]}
         >
-            
             <KanbanGrid/>
         </Taeko>
         </>

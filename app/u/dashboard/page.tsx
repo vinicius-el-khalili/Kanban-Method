@@ -1,7 +1,7 @@
 "use client"
 
 import { useProjectStore } from "@/store/Projects/ProjectStore";
-import { Button, Stack, Typography } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import { useAuthStore } from "@/store/Auth/AuthStore";
 import { useEffect } from "react";
 import CreateProject from "@/components/projects/CreateProject";
@@ -25,11 +25,19 @@ const Page = () => {
         title="Projects"
         buttons={[<CreateProject/>]}
         >
-            <Stack spacing={1}>
-                {projects&&projects.map((project,i)=>(
-                    <ProjectCard key={`prj_crd${i}`} {...{project}}/>
-                )).reverse()}
-            </Stack>
+            <Box {...{
+                overflow:"hidden",
+                height:"100%",
+                sx:{overflowY:"scroll"},
+            }}>
+                <Stack {...{
+                    spacing:1
+                }}>
+                    {projects&&projects.map((project,i)=>(
+                        <ProjectCard key={`prj_crd${i}`} {...{project}}/>
+                    )).reverse()}
+                </Stack>
+            </Box>
         </Taeko>
         </>
     );

@@ -23,7 +23,9 @@ const CreateProject = () => {
         <Button
         onClick={()=>set_modal(true)}
         startIcon={<Add/>}
-        variant="outlined">
+        variant="contained"
+        color="inherit"
+        >
             Create project
         </Button>
         <Modal 
