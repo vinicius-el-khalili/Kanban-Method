@@ -1,3 +1,7 @@
+# Demo
+
+ - https://kanban-method.vercel.app/
+
 # Back
 
 ### User Authentication
@@ -9,25 +13,25 @@
 
 - [x] Get All Projects: GET /api/projects
 - [x] Create Project: POST /api/projects
-- [x] Get All Projects by User: GET /api/projects/user/[userId]
-- [x] Get Project by ID: GET /api/projects/project/[projectId]
-- [x] Update Project: PATCH /api/projects/project/[projectId]
-- [x] Delete Project: DELETE /api/projects/project/[projectId]
-- [x] Get Tasks by Project: GET /api/projects/project/[projectId]/tasks
+- [x] Get All Projects by User: GET /api/projects/user/[userID]
+- [x] Get Project by ID: GET /api/projects/project/[projectID]
+- [x] Update Project: PATCH /api/projects/project/[projectID]
+- [x] Delete Project: DELETE /api/projects/project/[projectID]
+- [x] Get Tasks by Project: GET /api/projects/project/[projectID]/tasks
 
 ### Task Management
 
 - [x] Create Task: POST /api/tasks/
-- [x] Get Task by ID: GET /api/tasks/[taskId]
-- [x] Update Task: PATCH /api/tasks/[taskId]
-- [x] Delete Task: DELETE /api/tasks/[taskId]
+- [x] Get Task by ID: GET /api/tasks/[taskID]
+- [x] Update Task: PATCH /api/tasks/[taskID]
+- [x] Delete Task: DELETE /api/tasks/[taskID]
 
-### Contributor Management
+### Friend Group Management
 
-- [ ] Get detailed Project info by user: GET /api/projects/user/[userId]
-- [ ] 
-- [ ] 
-- [ ] 
+- [ ... ] Update User Schema
+- [ ] Add friend by username: PATCH /api/users/[userID]/
+- [ ] Remove friend by username: PATCH /api/users/[userID]/
+- [ ] Add/Remove collaborator at Project: PATCH /api/projects/project/[projectID]
 
 # Front
 

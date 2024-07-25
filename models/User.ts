@@ -1,17 +1,19 @@
 import { Document, Schema, model, models } from "mongoose";
-import { MongoDocument } from "@/types/MongoDocument";
 
 export type UserSchema = {
-    email: string,
+    login: string,
     password: string,
     username: string,
+    avatar: number,
+    color: number,
+    friends: string[]
 }
 
 export interface IUser extends Document,UserSchema {}
 
 
 const userSchema = new Schema ({
-    email: {
+    login: {
         type: String,
         require: true,
         unique: true
@@ -22,6 +24,22 @@ const userSchema = new Schema ({
     },
     username: {
         type: String,
+        require: true,
+        unique: true
+    },
+    avatar: {
+        type: Number,
+        default: 0,
+        require: true
+    },
+    color: {
+        type: Number,
+        default: 0,
+        require: true
+    },
+    friends: {
+        type: [String],
+        default:[],
         require: true
     }
 })

@@ -10,38 +10,31 @@ export async function POST(req:NextRequest) {
     await dbConnect()
     try{
 
-        const {email,password,username}:{
-            email:string,
-            password:string,
-            username:string
-        } = await req.json()
+        const newUser:UserSchema = await req.json()
 
         // input validation
-        if(!email||!password||!username){
+        if(!newUser.login||!newUser.password||!newUser.username){
             return NextResponse.json("Partial content: all fields must be filled",{status:206})
         }
-        if(!validator.isEmail(email)){
-            return NextResponse.json("Precondition failed: invalid email",{status:412})
-        }
-        if(!validator.isStrongPassword(password)){
+        if(!validator.isStrongPassword(newUser.password)){
             return NextResponse.json("Precondition failed: weak password",{status:412})
         }
 
         // check user existence
-        const exists = await User.findOne({email})   
+        const exists = await User.findOne({login:newUser.login})   
         if(exists){
             return NextResponse.json("Conflict: email already in use",{status:409})
         }        
 
         // hash password
         const salt = await genSalt()
-        const Hash = await hash(password,salt)
+        const Hash = await hash(newUser.password,salt)
 
         // create user
         const user:UserSchema&MongoDocument = await User.create({
-            email,
+            login:newUser.login,
             password:Hash,
-            username
+            username:newUser.username
         })
 
         // create token
