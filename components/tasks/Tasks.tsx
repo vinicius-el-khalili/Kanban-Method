@@ -16,7 +16,7 @@ const Tasks = () => {
         <Stack key={selectedProject?._id}>
         {tasks&&tasks.length>0&&
             tasks.map((task,i)=>(
-                <TaskCard key={`tskcrd${i}`} {...{task}}/>
+                <TaskCard key={`tskcrd__${i}`} {...{task}}/>
             ))
         }
         </Stack>

@@ -4,15 +4,34 @@ import { MongoDocument } from "@/types/MongoDocument";
 import { Autorenew, Check, Delete, HourglassBottom } from "@mui/icons-material";
 import { Accordion, AccordionActions, AccordionSummary, Avatar, Box, Button, Card, CardHeader, Divider, IconButton, Stack, Typography } from "@mui/material";
 import TaskDeleteButton from "./TaskCardButtons/TaskDeleteButton";
+import { Dispatch, SetStateAction } from "react";
 
-const TaskCard = ({task}:{
+const TaskCard = ({task,selectedTaskID,set_selectedTaskID}:{
     task:TaskSchema&MongoDocument
+    selectedTaskID:string|null
+    set_selectedTaskID:Dispatch<SetStateAction<string|null>>
 }) => {
 
     const patchTask = useTaskStore((state)=>(state.method.patch))
+    const refreshTasks = useTaskStore((state)=>(state.method.refresh))
+
+    const setStatus = async(status:number)=>{
+        await patchTask(task._id,{status})
+        await refreshTasks(task.project_id)
+        set_selectedTaskID(null)
+    }
 
     return (
-        <Accordion>
+        <Accordion
+        expanded={task._id==selectedTaskID}
+        onChange={(e,exp)=>{
+            if(exp){
+                set_selectedTaskID(task._id)    
+            }else{
+                set_selectedTaskID(null)
+            }
+        }}
+        >
 
             <AccordionSummary>
                 <Box {...{
@@ -62,6 +81,7 @@ const TaskCard = ({task}:{
                 <Divider orientation="vertical" flexItem />
 
                 <IconButton {...{
+                    onClick:()=>setStatus(0),
                     disabled:task.status==0,
                     color:"info",
                     size:"small"
@@ -70,14 +90,16 @@ const TaskCard = ({task}:{
                 </IconButton>
 
                 <IconButton {...{
+                    onClick:()=>setStatus(1),
                     disabled:task.status==1,
                     color:"warning",
-                    size:"small"
+                    size:"small",
                 }}>
                     <Autorenew/>
                 </IconButton>
 
                 <IconButton {...{
+                    onClick:()=>setStatus(2),
                     disabled:task.status==2,
                     color:"success",
                     size:"small"
