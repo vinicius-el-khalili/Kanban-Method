@@ -18,14 +18,8 @@ export async function POST(req:NextRequest) {
     await dbConnect()
     try{
 
-        const {user_id,title,contributors}:ProjectSchema = await req.json()
-
-        const project = await Project.create({
-            user_id,
-            title,
-            contributors
-        })
-
+        const newProject:ProjectSchema = await req.json()
+        const project = await Project.create(newProject)
         return NextResponse.json(project)
 
     }catch(err:any){

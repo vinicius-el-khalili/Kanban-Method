@@ -1,5 +1,5 @@
 import dbConnect from "@/lib/dbConnect";
-import Task from "@/models/Task";
+import Task, { TaskSchema } from "@/models/Task";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
@@ -16,23 +16,9 @@ export async function POST(req:NextRequest) {
     await dbConnect()
     try{ 
         
-        const {user_id,project_id,title,status,contributors}:{
-            user_id:string,
-            project_id:string,
-            title:string,
-            status:number,
-            contributors:string[]
-        } = await req.json()
-        
-        const task = await Task.create({
-            user_id,
-            project_id,
-            title,
-            status,
-            contributors
-        })
-        
-        return NextResponse.json({task},{status:200})
+        const newTask:TaskSchema = await req.json()
+        const task = await Task.create(newTask)
+        return NextResponse.json(task)
 
     }catch(err:any){
         return NextResponse.json({error:err.message})

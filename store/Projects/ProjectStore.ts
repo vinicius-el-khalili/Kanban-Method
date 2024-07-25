@@ -6,17 +6,20 @@ import { MongoDocument } from "@/types/MongoDocument"
 type ProjectStore = {
     store: {
         projects:(ProjectSchema&MongoDocument)[]|null
+        selectedProject:ProjectSchema&MongoDocument|null
     },
     method: {
         refresh:()=>Promise<void>
         create:(title:string)=>Promise<void>
         delete:(_id:string)=>Promise<void>
+        select:(project:ProjectSchema&MongoDocument|null)=>void
     }
 }
 
 export const useProjectStore = create<ProjectStore>()((set,get)=>({
     store: {
-        projects:null
+        projects:null,
+        selectedProject:null
     },
     method: {
 
@@ -82,5 +85,13 @@ export const useProjectStore = create<ProjectStore>()((set,get)=>({
             get().method.refresh()
 
         },
+
+        select: (project)=>{
+            set((state)=>({
+                store:{...state.store,
+                    selectedProject:project
+                }
+            }))
+        }
     }
 }))

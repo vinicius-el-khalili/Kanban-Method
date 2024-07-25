@@ -1,11 +1,14 @@
 import { Document, ObjectId, Schema, model, models } from "mongoose";
-export interface ITask extends Document {
+
+export type TaskSchema = {
     user_id: string,
     project_id: string
     title: string,
     status: number,
-    contributors:ObjectId[],
+    contributors:string[],
 }
+
+export interface ITask extends Document,TaskSchema {}
 
 const taskSchema = new Schema ({
     user_id:{

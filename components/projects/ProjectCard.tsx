@@ -1,6 +1,7 @@
 "use client"
 
 import { ProjectSchema } from "@/models/Project";
+import { useProjectStore } from "@/store/Projects/ProjectStore";
 import { MongoDocument } from "@/types/MongoDocument";
 import { Avatar, Box, ButtonBase, Card, CardHeader } from "@mui/material";
 import { useRouter } from "next/navigation";
@@ -10,13 +11,20 @@ const ProjectCard = ({project}:{
 }) => {
 
     const router = useRouter()
+    const selectProject = useProjectStore((state)=>(state.method.select))
+
+    const onClick = ()=>{
+        selectProject(project)
+        router.push(`/u/project/${project._id}`)
+    }
 
     return (
         <>
         <ButtonBase 
-        sx={{ width: "100%" }} 
+        sx={{width:"100%"}} 
         component={"div"} 
-        onClick={()=>{router.push(`/u/project/${project._id}`)}}>
+        onClick={onClick}>
+
             <Box sx={{ width: "100%" }}>
                 <Card variant="outlined" sx={{width:"100%"}}>
                     <CardHeader
@@ -25,6 +33,7 @@ const ProjectCard = ({project}:{
                         />
                 </Card>
             </Box>
+
         </ButtonBase>
         </>
     );
