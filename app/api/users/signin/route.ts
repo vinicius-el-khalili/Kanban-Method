@@ -23,7 +23,7 @@ export async function POST(req:NextRequest){
         // check user existence
         const user:UserSchema&MongoDocument|null = await User.findOne({login})
         if(!user){
-            return NextResponse.json("Forbidden: email not found",{status:403})
+            return NextResponse.json("Forbidden: login not found",{status:403})
         }
 
         // compare passwords

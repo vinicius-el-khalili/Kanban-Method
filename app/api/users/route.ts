@@ -20,14 +20,16 @@ export async function POST(req:NextRequest){
     await dbConnect()
     try {
 
-        const {email,password,name}:{
-            email:string,
+        type Body = {
+            login:string,
             password:string,
             name:string
-        } = await req.json()
+        }
+
+        const {login,password,name}:Body = await req.json()
 
         const user = await User.create({
-            email,
+            login,
             password,
             name
         })

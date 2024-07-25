@@ -11,7 +11,6 @@ export type UserSchema = {
 
 export interface IUser extends Document,UserSchema {}
 
-
 const userSchema = new Schema ({
     login: {
         type: String,

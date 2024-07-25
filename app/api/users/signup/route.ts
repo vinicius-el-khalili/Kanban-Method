@@ -23,7 +23,7 @@ export async function POST(req:NextRequest) {
         // check user existence
         const exists = await User.findOne({login:newUser.login})   
         if(exists){
-            return NextResponse.json("Conflict: email already in use",{status:409})
+            return NextResponse.json("Conflict: login already in use",{status:409})
         }        
 
         // hash password
