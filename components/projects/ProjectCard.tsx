@@ -40,7 +40,7 @@ const ProjectCard = ({project}:{
                             alignItems:"center"
                         }}>
 
-                            <Typography variant="h5" sx={{display:"flex",alignItems:"center",gap:1.5}}>
+                            <Typography variant="h6" sx={{display:"flex",alignItems:"center",gap:1.5}}>
                                 <Checklist/> {project.title}
                             </Typography>
                             <AvatarGroup>
