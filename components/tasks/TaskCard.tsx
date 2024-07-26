@@ -81,7 +81,7 @@ const TaskCard = ({task,selectedTaskID,set_selectedTaskID}:{
                             {task.contributors.map((c,i)=>(
                                 <Avatar 
                                 key={`${task._id}${c.user_id}`}
-                                sx={{width:24,height:24,bgcolor:blue[500]}}>
+                                sx={{width:24,height:24}}>
                                     {c.username[0]}
                                 </Avatar>
                             ))}

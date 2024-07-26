@@ -32,7 +32,7 @@ const SideBar = () => {
 
                         <ListItem>
                             <ListItemButton onClick={()=>{console.log(user)}}>
-                                <Avatar sx={{bgcolor:teal[300],height:28,width:28}}>
+                                <Avatar sx={{height:28,width:28}}>
                                     {user?.username[0]}
                                 </Avatar>
                                 <span style={{width:12}}/>
@@ -62,7 +62,7 @@ const SideBar = () => {
                             <ListItemButton onClick={()=>router.push("/u/dashboard")}>
                                 <Checklist/>
                                 <span style={{width:12}}/>
-                                <ListItemText primary={"Projects"}/>
+                                <ListItemText primary={"lists"}/>
                             </ListItemButton>
                         </ListItem>
                     </List>

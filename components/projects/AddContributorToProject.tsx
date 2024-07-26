@@ -15,6 +15,7 @@ const AddContributorToProject = () => {
     const [warning,set_warning] = useState<string|null>(null)
 
     const addContributerToProject = useProjectStore((state)=>(state.method.addContributerToProject))
+    const selectedProject = useProjectStore((state)=>(state.store.selectedProject))
 
     const handleSearch = async () => {
 
@@ -73,13 +74,19 @@ const AddContributorToProject = () => {
                     p:6
                 }
             }}>
-                <Stack spacing={3} maxWidth={300}>
+                <Stack spacing={4} maxWidth={300}>
 
-                    <Typography
-                    fontWeight="bold"
-                    color="primary"
-                    variant="h5">
-                        Add Contributor to Project
+                    <Stack direction="column" alignItems="center">
+                        <Typography color="GrayText" variant="body2" textAlign="end">
+                            Task Lists/
+                        </Typography>
+                        <Typography color="primary" textAlign="end" variant="body1">
+                            {`${selectedProject?.title}`}
+                        </Typography>
+                    </Stack>
+
+                    <Typography fontWeight="light" variant="h6" textAlign="center">
+                        Add Contributor
                     </Typography>
 
                     <TextField

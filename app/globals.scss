@@ -50,3 +50,20 @@ body {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+.textarea {
+  border:none;
+  outline: none;
+  font-family:'Courier New', Courier, monospace;
+  resize: none;
+  overflow-y: scroll;
+}
+
+.textarea_dark {
+  border:none;
+}
+
+.textarea_light {
+  background-color: white;
+  color: black;
+}

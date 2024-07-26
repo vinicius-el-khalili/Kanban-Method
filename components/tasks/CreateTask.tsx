@@ -3,9 +3,10 @@
 import { useAuthStore } from "@/store/Auth/AuthStore";
 import { useProjectStore } from "@/store/Projects/ProjectStore";
 import { useTaskStore } from "@/store/Tasks/TaskStore";
-import { Add, Close, PlusOne } from "@mui/icons-material";
-import { Box, Button, Card, Modal, Paper, Stack, TextField, Typography } from "@mui/material";
+import { Add } from "@mui/icons-material";
+import { Button, Card, Modal, Stack, TextareaAutosize, Typography } from "@mui/material";
 import { FormEvent, useState } from "react";
+import MyTextarea from "../layout/grids&layouts/MyTextarea";
 
 const CreateTask = () => {
 
@@ -73,18 +74,29 @@ const CreateTask = () => {
             <form onSubmit={handleSubmit}>
                 <Stack spacing={3}>
 
-                    <Typography
-                    color="primary"
-                    variant="h5">
-                        Create Task
-                    </Typography>
+                    <Stack direction="column" alignItems="center">
+                        <Typography color="GrayText" variant="body2" textAlign="end">
+                            Task Lists/
+                        </Typography>
+                        <Typography color="primary" textAlign="end" variant="body1">
+                            {`${selectedProject?.title}`}
+                        </Typography>
+                    </Stack>
 
-                    <TextField 
-                        label="Name your task" 
-                        variant="standard"
+                    <Typography fontWeight="light" variant="h6" textAlign="center">
+                        Add Task
+                    </Typography>
+                    
+                    <MyTextarea
                         value={input}
                         onChange={e=>set_input(e.target.value)}
                     />
+                    
+                    {/* <TextField
+                        label="Description" 
+                        variant="standard"
+                        
+                    /> */}
 
                     <Button 
                     disabled={input.length<3}

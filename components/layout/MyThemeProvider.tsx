@@ -24,7 +24,9 @@ const MyThemeProvider = ({children}:{
     })
 
     const darkTheme = createTheme({
-        palette:{mode:"dark",primary:teal},
+        palette:{
+            mode:"dark",
+            primary:teal},
         typography: {fontFamily:"monospace"}
     })
 
