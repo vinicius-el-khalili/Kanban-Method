@@ -23,7 +23,11 @@ const Page = () => {
     return (
         <>
         <Taeko 
-        title={<><Checklist/> Lists</>}
+        title={
+            <Typography variant="h4" >
+                Lists
+            </Typography>
+        }
         buttons={[<CreateProject/>]}
         >
             <Box {...{

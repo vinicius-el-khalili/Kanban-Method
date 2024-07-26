@@ -6,7 +6,8 @@ import CreateTask from "@/components/tasks/CreateTask";
 import KanbanGrid from "@/components/tasks/KanbanGrid";
 import { useAuthStore } from "@/store/Auth/AuthStore";
 import { useProjectStore } from "@/store/Projects/ProjectStore";
-import { Avatar, AvatarGroup, Typography } from "@mui/material";
+import { Checklist } from "@mui/icons-material";
+import { Avatar, AvatarGroup, Stack, Typography } from "@mui/material";
 import { useEffect } from "react";
 
 const Page = ({ params }: { params: { project_id: string } }) => {
@@ -29,8 +30,12 @@ const Page = ({ params }: { params: { project_id: string } }) => {
         <Taeko 
         title={
             <>
-            <Typography>{`Lists > `}</Typography>
-            <Typography variant="h4" color="primary.light">{selectedProject.title}</Typography>
+            <Typography color="GrayText">
+                {`Lists/ `}
+            </Typography>
+            <Typography variant="h4" color="primary.light" sx={{display:"flex",alignItems:"center",gap:2,mb:2}}>
+                <Checklist fontSize="large"/> {selectedProject.title}
+            </Typography>
             <AvatarGroup sx={{justifyContent:"start"}}>
                 {selectedProject.contributors.map((contributor,i)=>(
                     <Avatar>
