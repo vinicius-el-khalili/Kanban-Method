@@ -66,3 +66,32 @@
 - [ ] Add/Remove contributor to User friends list: PATCH /api/users/[userID]
 - [ ] Add/Remove contributor to User friends list: User Store
 - [ ] Add/Remove contributor to User friends list: UI
+
+.
+├── projects
+│   ├── project
+│   │   └── [projectId]
+│   │       ├── route.ts *
+│   │       └── tasks
+│   │           └── route.ts *
+│   ├── route.ts *
+│   └── user 
+│       └── [userId]
+│           └── route.ts *
+├── tasks 
+│   ├── route.ts *
+│   └── [taskId]
+│       └── route.ts *
+└── users
+    ├── refresh
+    │   └── route.ts *
+    ├── search
+    │   └── [login]
+    │       └── route.ts *
+    ├── signin
+    │   └── route.ts
+    ├── signup
+    │   └── route.ts
+    └── [userID]
+        └── route.ts *
+
