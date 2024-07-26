@@ -22,7 +22,7 @@ const Page = () => {
     return (
         <>
         <Taeko 
-        title="Projects"
+        title={<>Projects</>}
         buttons={[<CreateProject/>]}
         >
             <Box {...{
