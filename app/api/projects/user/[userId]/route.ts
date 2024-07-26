@@ -2,7 +2,7 @@ import Project from "@/models/Project";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req:NextRequest,{params}:{params:{userId:string}}){
-    try{
+    try{ // GET Projects by User id
 
         const {userId} = params
         const projects = await Project.find({

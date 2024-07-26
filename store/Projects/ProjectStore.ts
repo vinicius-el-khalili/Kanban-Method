@@ -114,11 +114,15 @@ export const useProjectStore = create<ProjectStore>()((set,get)=>({
 
         initializeProjectPageByID: async(_id)=>{
             
+            const token = useAuthStore.getState().store.token
+            if(!token){ return }
+
             const res = await fetch(`/api/projects/project/${_id}`,{
                 method:"GET",
                 headers:{
                     "Accept":"application/json",
                     "Content-Type":"application/json",
+                    "Authorization":`Bearer ${token}`
                 },
             })
             if(!res||res.status!=200){ return }

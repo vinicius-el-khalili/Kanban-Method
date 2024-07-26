@@ -71,7 +71,7 @@
 ├── projects
 │   ├── project
 │   │   └── [projectId]
-│   │       ├── route.ts *
+│   │       ├── route.ts (*)
 │   │       └── tasks
 │   │           └── route.ts *
 │   ├── route.ts *
@@ -84,7 +84,7 @@
 │       └── route.ts *
 └── users
     ├── refresh
-    │   └── route.ts *
+    │   └── route.ts (*)
     ├── search
     │   └── [login]
     │       └── route.ts *
