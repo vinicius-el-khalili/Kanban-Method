@@ -33,7 +33,7 @@ const Page = ({ params }: { params: { project_id: string } }) => {
             <Typography color="GrayText">
                 {`Lists/ `}
             </Typography>
-            <Typography variant="h4" color="primary.light" sx={{display:"flex",alignItems:"center",gap:2,mb:2}}>
+            <Typography variant="h4" color="primary" sx={{display:"flex",alignItems:"center",gap:2,mb:2}}>
                 <Checklist fontSize="large"/> {selectedProject.title}
             </Typography>
             <AvatarGroup sx={{justifyContent:"start"}}>

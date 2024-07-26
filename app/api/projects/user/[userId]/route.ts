@@ -5,7 +5,12 @@ export async function GET(req:NextRequest,{params}:{params:{userId:string}}){
     try{
 
         const {userId} = params
-        const projects = await Project.find({user_id:userId})
+        const projects = await Project.find({
+            $or:[
+                {user_id:userId},
+                {"contributors.user_id":userId}
+            ]
+        })
         return NextResponse.json(projects)
 
     }catch(err:any){

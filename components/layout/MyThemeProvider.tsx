@@ -17,7 +17,7 @@ const MyThemeProvider = ({children}:{
             primary:deepPurple,
             background: {
                 default: "#eee",
-                paper: "#ddd"
+                paper: "#e5e5e5"
             }
         },
         typography: {fontFamily:"monospace"}
@@ -26,7 +26,8 @@ const MyThemeProvider = ({children}:{
     const darkTheme = createTheme({
         palette:{
             mode:"dark",
-            primary:teal},
+            primary:teal
+        },
         typography: {fontFamily:"monospace"}
     })
 

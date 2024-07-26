@@ -66,9 +66,9 @@ const Column = ({title,tasks,selectedTaskID,set_selectedTaskID}:{
             gridTemplateRows:"auto 1fr",
             height:"100%",
             overflow:"hidden",
-            gap:.5
+            gap:1
         }}>
-            <Paper>
+            <Paper elevation={0}>
             <Typography {...{
                 fontSize:"large",
                 justifyContent:"center",
@@ -88,7 +88,7 @@ const Column = ({title,tasks,selectedTaskID,set_selectedTaskID}:{
                 pt:.4,
                 display:"flex",
                 flexDirection:"column",
-                gap:.5
+                gap:1
             }}>
                 {tasks&&tasks.map((task,i)=>(
                     <TaskCard 
