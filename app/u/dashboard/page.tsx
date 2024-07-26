@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import CreateProject from "@/components/projects/CreateProject";
 import ProjectCard from "@/components/projects/ProjectCard";
 import Taeko from "@/components/layout/grids&layouts/Taeko";
+import { Checklist } from "@mui/icons-material";
 
 const Page = () => {
 
@@ -22,7 +23,7 @@ const Page = () => {
     return (
         <>
         <Taeko 
-        title={<>Lists</>}
+        title={<><Checklist/> Lists</>}
         buttons={[<CreateProject/>]}
         >
             <Box {...{

@@ -29,8 +29,8 @@ const Page = ({ params }: { params: { project_id: string } }) => {
         <Taeko 
         title={
             <>
-            <Typography>{`Projects > `}</Typography>
-            {selectedProject.title}
+            <Typography>{`Lists > `}</Typography>
+            <Typography variant="h4" color="primary.light">{selectedProject.title}</Typography>
             <AvatarGroup sx={{justifyContent:"start"}}>
                 {selectedProject.contributors.map((contributor,i)=>(
                     <Avatar>

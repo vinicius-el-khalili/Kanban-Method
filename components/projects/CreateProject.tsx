@@ -26,7 +26,7 @@ const CreateProject = () => {
         variant="contained"
         color="inherit"
         >
-            Create project
+            list
         </Button>
         <Modal 
             open={modal} 
@@ -50,11 +50,11 @@ const CreateProject = () => {
                     <Typography
                     color="primary"
                     variant="h5">
-                        Create Project
+                        New list
                     </Typography>
 
                     <TextField 
-                        label="Name your project" 
+                        label="list name" 
                         variant="standard"
                         value={input}
                         onChange={e=>set_input(e.target.value)}
