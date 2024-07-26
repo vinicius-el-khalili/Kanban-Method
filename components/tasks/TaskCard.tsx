@@ -56,7 +56,7 @@ const TaskCard = ({task,selectedTaskID,set_selectedTaskID}:{
                         }}>
                             {task.status==0&&
                             <HourglassBottom {...{
-                                color:"inherit",
+                                color:"info",
                                 sx:{height:18,width:18,opacity:.5},
                             }}/>}
                             {task.status==1&&
@@ -76,7 +76,7 @@ const TaskCard = ({task,selectedTaskID,set_selectedTaskID}:{
                         </Typography>
 
                     </Box>
-                    <Box {...{pt:1}}>
+                    {/* <Box {...{pt:1}}>
                         <AvatarGroup>
                             {task.contributors.map((c,i)=>(
                                 <Avatar 
@@ -86,7 +86,7 @@ const TaskCard = ({task,selectedTaskID,set_selectedTaskID}:{
                                 </Avatar>
                             ))}
                         </AvatarGroup>
-                    </Box>
+                    </Box> */}
                 </Box>
             </AccordionSummary>
             
@@ -107,14 +107,14 @@ const TaskCard = ({task,selectedTaskID,set_selectedTaskID}:{
                     <HourglassBottom/>
                 </IconButton>
 
-                <IconButton {...{
+                {/* <IconButton {...{
                     onClick:()=>setStatus(1),
                     disabled:task.status==1,
                     color:"warning",
                     size:"small",
                 }}>
                     <Autorenew/>
-                </IconButton>
+                </IconButton> */}
 
                 <IconButton {...{
                     onClick:()=>setStatus(2),

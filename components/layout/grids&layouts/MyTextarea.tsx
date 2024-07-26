@@ -19,6 +19,7 @@ const MyTextarea = ({value,onChange,placeholder=""}:{
       minRows:8,
       maxRows:8,
       style:{paddingLeft:20,paddingRight:20,paddingTop:10,paddingBottom:6},
+      autoFocus:true
     }}
     />
   );

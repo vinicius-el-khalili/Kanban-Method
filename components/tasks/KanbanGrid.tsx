@@ -22,19 +22,27 @@ const KanbanGrid = () => {
             <Column 
             selectedTaskID={selectedTaskID}
             set_selectedTaskID={set_selectedTaskID}
-            title={<>to do</>} 
+            title={
+                <Typography color="GrayText">
+                    <HourglassBottom color="inherit"/>
+                </Typography>
+            } 
             tasks={!tasks?[]:tasks.filter(task=>task.status==0)}/>
 
-            <Column 
+            {/* <Column 
             selectedTaskID={selectedTaskID}
             set_selectedTaskID={set_selectedTaskID}
             title={<>doing</>} 
-            tasks={!tasks?[]:tasks.filter(task=>task.status==1)}/>
+            tasks={!tasks?[]:tasks.filter(task=>task.status==1)}/> */}
 
             <Column 
             selectedTaskID={selectedTaskID}
             set_selectedTaskID={set_selectedTaskID}
-            title={<>done</>} 
+            title={
+                <Typography color="GrayText">
+                    <Check color="inherit"/>
+                </Typography>
+            } 
             tasks={!tasks?[]:tasks.filter(task=>task.status==2)}/>
 
         </Box>
@@ -57,7 +65,8 @@ const Column = ({title,tasks,selectedTaskID,set_selectedTaskID}:{
             display:"grid",
             gridTemplateRows:"auto 1fr",
             height:"100%",
-            overflow:"hidden"
+            overflow:"hidden",
+            gap:.5
         }}>
             <Paper>
             <Typography {...{
@@ -65,7 +74,7 @@ const Column = ({title,tasks,selectedTaskID,set_selectedTaskID}:{
                 justifyContent:"center",
                 textAlign:"center",
                 sx:{
-                    p:.5,
+                    pt:1,
                     borderRadius:1,
                 }
             }}>
