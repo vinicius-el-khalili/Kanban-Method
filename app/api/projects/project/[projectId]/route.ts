@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(req:NextRequest,{params}:{params:{projectId:string}}){
     await dbConnect()
     try{
-
+        
         const {projectId} = params
         const project = await Project.findById(projectId)
         return NextResponse.json(project)
@@ -23,14 +23,23 @@ export async function PATCH(req:NextRequest,{params}:{params:{projectId:string}}
         const {projectId} = params
         const updatedProject:ProjectSchema&MongoDocument = await req.json()
         const currentProject:ProjectSchema&MongoDocument|null = await Project.findById(updatedProject._id)
+
+        // check document existence
         if (!currentProject){
             return NextResponse.json("Project not found",{status:400})
         }
+
+        // check if user is a contributor
+        /// token = user token
+        /// decrypt token -> token* -> user_id
+        /// check if contributors contain user_id
+
+        // check request reasoanableness
         if(updatedProject.user_id!=currentProject.user_id){
             return NextResponse.json("can't update user id",{status:401})
         }
 
-        // check for duplicated contributors
+        // check duplicated contributors
         const updatedContributors = currentProject.contributors.map(c=>c.user_id)
         if(new Set(updatedContributors).size != updatedContributors.length){
             return NextResponse.json("contributor already added",{status:402})
