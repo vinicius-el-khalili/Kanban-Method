@@ -24,7 +24,7 @@ const SignInForm = () => {
         <>
         <TextField {...{
             size:"small",
-            label:"Email",
+            label:"Login",
             variant:"standard",
             value:email?email:"",
             required:true,

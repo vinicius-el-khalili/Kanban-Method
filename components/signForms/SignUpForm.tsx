@@ -25,7 +25,7 @@ const SignUpForm = () => {
         <>
         <TextField {...{
             size:"small",
-            label:"Email",
+            label:"Login",
             variant:"standard",
             value:login?login:"",
             onChange:(e)=>{set_login(e.target.value)}
