@@ -1,4 +1,4 @@
-import { ProjectSchema } from "@/models/Project"
+import { Contributor, ProjectSchema } from "@/models/Project"
 import { create } from "zustand"
 import { useAuthStore } from "../Auth/AuthStore"
 import { MongoDocument } from "@/types/MongoDocument"
@@ -15,8 +15,9 @@ type ProjectStore = {
         refresh:()=>Promise<void>
         create:(title:string)=>Promise<void>
         delete:(_id:string)=>Promise<void>
-        select:(project:ProjectSchema&MongoDocument|null)=>void
+        patch:(updatedProject:ProjectSchema&MongoDocument)=>Promise<boolean>
         initializeProjectPageByID:(_id:string)=>Promise<void>
+        addContributerToProject:(contributor:Contributor)=>Promise<boolean>
     }
 }
 
@@ -96,12 +97,19 @@ export const useProjectStore = create<ProjectStore>()((set,get)=>({
 
         },
 
-        select: (project)=>{
-            set((state)=>({
-                store:{...state.store,
-                    selectedProject:project
-                }
-            }))
+        patch: async(updatedProject)=>{
+
+            const res = await fetch(`/api/projects/project/${updatedProject._id}`,{
+                method:"PATCH",
+                headers:{
+                    "Accept":"application/json",
+                    "Content-Type":"application/json",
+                },
+                body: JSON.stringify(updatedProject)
+            })
+            if(!res||res.status!=200){ return false }
+            return true
+
         },
 
         initializeProjectPageByID: async(_id)=>{
@@ -125,6 +133,28 @@ export const useProjectStore = create<ProjectStore>()((set,get)=>({
                 }
             }))
 
+        },
+
+        addContributerToProject: async(contributor) => {
+
+            const selectedProject = get().store.selectedProject
+            if(!selectedProject){ return false }         
+            const patch = get().method.patch
+            const updatedProject:ProjectSchema&MongoDocument = {
+                ...selectedProject,
+                contributors:[...selectedProject.contributors,
+                    contributor
+                ]
+            }
+            const result = await patch(updatedProject)
+            if(!result){ return false }
+            set((state)=>({
+                store:{...state.store,
+                    selectedProject:updatedProject
+                }
+            }))
+            return true
+            
         }
     }
 }))

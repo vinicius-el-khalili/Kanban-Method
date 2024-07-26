@@ -1,5 +1,6 @@
 import dbConnect from "@/lib/dbConnect";
-import Project, { Contributor } from "@/models/Project";
+import Project, { Contributor, ProjectSchema } from "@/models/Project";
+import { MongoDocument } from "@/types/MongoDocument";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req:NextRequest,{params}:{params:{projectId:string}}){
@@ -21,13 +22,9 @@ export async function PATCH(req:NextRequest,{params}:{params:{projectId:string}}
 
         const {projectId} = params
         
-        const update:{
-            title?:string
-            status?:number
-            contributors?:Contributor[]
-        } = await req.json()
+        const updatedProject:ProjectSchema&MongoDocument = await req.json()
 
-        const project = await Project.updateOne({_id:projectId},{$set:update})
+        const project = await Project.updateOne({_id:projectId},{$set:updatedProject})
         return NextResponse.json(project)
  
     }catch(err:any){

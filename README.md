@@ -49,12 +49,17 @@
 - [x] Update Task Schema
 - [x] Update Task operations
 
-### Contribution Management: Features
+### Project Contribution Management
 
-- [x] Add/Remove contributor to Project: PATCH /api/tasks/[taskID]
-- [ ] Add/Remove contributor to Project: ProjectStore
-- [ ] Add/Remove contributor to Project: UI
+- [x] Add contributor to Project: PATCH /api/projects/project/[projectID]
+- [x] Add contributor to Project: PATCH ProjectStore
+- [x] Get User Contributor object: GET /api/users/[userID]
+- [x] Add contributor to Project: UI
 - [x] Add/Remove contributor to Task: PATCH /api/tasks/[taskID]
+- [ ] Show shared projects @ Projects page
+
+### Task Assignment Management
+
 - [ ] Add/Remove contributor to Task: ProjectStore
 - [ ] Add/Remove contributor to Task: UI
 - [ ] Add/Remove contributor to Task: PATCH /api/tasks/[taskID]

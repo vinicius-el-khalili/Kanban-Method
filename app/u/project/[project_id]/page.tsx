@@ -1,6 +1,7 @@
 "use client"
 
 import Taeko from "@/components/layout/grids&layouts/Taeko";
+import AddContributorToProject from "@/components/projects/AddContributorToProject";
 import CreateTask from "@/components/tasks/CreateTask";
 import KanbanGrid from "@/components/tasks/KanbanGrid";
 import { useAuthStore } from "@/store/Auth/AuthStore";
@@ -39,7 +40,7 @@ const Page = ({ params }: { params: { project_id: string } }) => {
             </AvatarGroup>
             </>
         }
-        buttons={[<CreateTask/>]}
+        buttons={[<CreateTask/>,<AddContributorToProject/>]}
         >
             <KanbanGrid/>
         </Taeko>

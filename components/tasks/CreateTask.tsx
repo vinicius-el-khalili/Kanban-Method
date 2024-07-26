@@ -52,7 +52,7 @@ const CreateTask = () => {
         variant="contained"
         color="inherit"
         >
-            item
+            TASK
         </Button>
         <Modal 
             open={modal} 
