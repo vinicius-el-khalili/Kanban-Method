@@ -38,6 +38,7 @@ const AddContributorToProject = () => {
     }
 
     const onChange = (e:ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        set_warning(null)
         if(contributor){set_contributor(null)}
         set_input(e.target.value)
     }
@@ -75,17 +76,24 @@ const AddContributorToProject = () => {
                 <Stack spacing={3} maxWidth={300}>
 
                     <Typography
+                    fontWeight="bold"
                     color="primary"
                     variant="h5">
                         Add Contributor to Project
                     </Typography>
 
                     <TextField
-                        label="login" 
+                        label="User login" 
                         variant="standard"
                         value={input?input:""}
                         onChange={onChange}
-                        color={contributor?"success":"primary"}
+                        color={contributor?"success":warning?"error":"primary"}
+                        helperText={
+                            <Typography fontWeight="bold" color="error">
+                                {warning}
+                            </Typography>
+                        }
+                        focused={(!!warning||!!contributor)?true:undefined}
                     />
 
                     {!contributor&&
