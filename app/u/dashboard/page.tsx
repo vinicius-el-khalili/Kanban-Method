@@ -38,14 +38,33 @@ const Page = () => {
                 
                 gap:2,
                 height:"100%",
-                overflow:{
-                    sm:"scroll",
-                    md:"hidden"
-                }
+                sx:{
+                    overflowY:{
+                        sm:"scroll",
+                        md:"hidden"
+                    },
+                    overflowX:"hidden"
+                },
                 
             }}>
 
-                <Box {...{display:{sm:"block",md:"none"}}}>
+                <Box {...{
+                    display:{xs:"none",sm:"none",md:"grid"},
+                    gap:2,
+                    gridColumn:"span 2",
+                    gridTemplateColumns:"1fr 1fr",
+                    alignItems:"center",
+                    alignContent:"center"
+                }}>
+                    <Typography {...{variant:"h5"}}>
+                        owned
+                    </Typography>
+                    <Typography {...{variant:"h5"}}>
+                        shared
+                    </Typography>
+                </Box>
+
+                <Box {...{display:{xs:"block",sm:"block",md:"none"}}}>
                     <Typography {...{variant:"h5"}}>
                         owned
                     </Typography>
