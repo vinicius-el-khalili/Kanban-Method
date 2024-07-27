@@ -1,4 +1,5 @@
 import dbConnect from "@/lib/dbConnect";
+import { validateTokenizedRequest } from "@/lib/validateToken";
 import { Contributor } from "@/models/Project";
 import User, { UserSchema } from "@/models/User";
 import { MongoDocument } from "@/types/MongoDocument";
@@ -9,7 +10,10 @@ export async function GET(req:NextRequest,{params}:{params:{userID:string}}){
     await dbConnect()
     try{
 
+        const payload = validateTokenizedRequest(req)
+        if(!payload){ return NextResponse.json("bad token",{status:400}) }
         const {userID} = params
+        
         const user:UserSchema&MongoDocument|null = await User.findById(userID)
         if(!user){
             return NextResponse.json("Forbidden: login not found",{status:403})

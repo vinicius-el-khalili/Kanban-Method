@@ -1,6 +1,7 @@
 import { TaskSchema } from "@/models/Task"
 import { MongoDocument } from "@/types/MongoDocument"
 import { create } from "zustand"
+import { useAuthStore } from "../Auth/AuthStore"
 
 type TaskStore = {
     store: {
@@ -26,11 +27,14 @@ export const useTaskStore = create<TaskStore>()((set,get)=>({
         
         refresh:async(project_id)=>{
 
+            const token = useAuthStore.getState().store.token
+            if(!token){ return }
             const res = await fetch(`/api/projects/project/${project_id}/tasks`,{
                 method:"GET",
                 headers:{
                     "Accept":"application/json",
                     "Content-Type":"application/json",
+                    "Authorization":`Bearer ${token}`
                 },
             })
             if(!res||res.status!=200){ return }
@@ -44,11 +48,14 @@ export const useTaskStore = create<TaskStore>()((set,get)=>({
         },
         create:async(newTask)=>{
 
+            const token = useAuthStore.getState().store.token
+            if(!token){ return false }
             const res = await fetch("/api/tasks",{
                 method:"POST",
                 headers:{
                     "Accept":"application/json",
                     "Content-Type":"application/json",
+                    "Authorization":`Bearer ${token}`
                 },
                 body: JSON.stringify(newTask)
             })
@@ -58,11 +65,14 @@ export const useTaskStore = create<TaskStore>()((set,get)=>({
         },
         patch:async(_id,updatedTask)=>{
 
+            const token = useAuthStore.getState().store.token
+            if(!token){ return false }
             const res = await fetch(`/api/tasks/${_id}`,{
                 method:"PATCH",
                 headers:{
                     "Accept":"application/json",
                     "Content-Type":"application/json",
+                    "Authorization":`Bearer ${token}`
                 },
                 body: JSON.stringify(updatedTask)
             })
@@ -72,11 +82,14 @@ export const useTaskStore = create<TaskStore>()((set,get)=>({
         },
         delete: async(_id)=>{
 
+            const token = useAuthStore.getState().store.token
+            if(!token){ return false }
             const res = await fetch(`/api/tasks/${_id}`,{
                 method:"DELETE",
                 headers:{
                     "Accept":"application/json",
                     "Content-Type":"application/json",
+                    "Authorization":`Bearer ${token}`
                 },
             })
             if(!res||res.status!=200){ return false }

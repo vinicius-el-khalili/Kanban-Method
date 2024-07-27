@@ -33,12 +33,15 @@ export const useProjectStore = create<ProjectStore>()((set,get)=>({
 
             const user = useAuthStore.getState().store.user
             if(!user){ return }
-
+            const token = useAuthStore.getState().store.token
+            if(!token){ return }
+            
             const res = await fetch(`/api/projects/user/${user._id}`,{
                 method:"GET",
                 headers:{
                     "Accept":"application/json",
                     "Content-Type":"application/json",
+                    "Authorization":`Bearer ${token}`
                 },
             })
             if(!res||res.status!=200){ return }
@@ -56,6 +59,8 @@ export const useProjectStore = create<ProjectStore>()((set,get)=>({
 
             const user = useAuthStore.getState().store.user
             if(!user){ return }
+            const token = useAuthStore.getState().store.token
+            if(!token){ return }
 
             const newProject:ProjectSchema={
                 user_id: user._id,
@@ -73,6 +78,7 @@ export const useProjectStore = create<ProjectStore>()((set,get)=>({
                 headers:{
                     "Accept":"application/json",
                     "Content-Type":"application/json",
+                    "Authorization":`Bearer ${token}`
                 },
                 body: JSON.stringify(newProject)
             })
@@ -85,11 +91,15 @@ export const useProjectStore = create<ProjectStore>()((set,get)=>({
 
             const user = useAuthStore.getState().store.user
             if(!user){ return }
+            const token = useAuthStore.getState().store.token
+            if(!token){ return }
+            
             const res = await fetch(`/api/projects/project/${_id}`,{
                 method:"DELETE",
                 headers:{
                     "Accept":"application/json",
                     "Content-Type":"application/json",
+                    "Authorization":`Bearer ${token}`
                 },
             })
             if(!res||res.status!=200){ return }
@@ -99,11 +109,15 @@ export const useProjectStore = create<ProjectStore>()((set,get)=>({
 
         patch: async(updatedProject)=>{
 
+            const token = useAuthStore.getState().store.token
+            if(!token){ return false }
+
             const res = await fetch(`/api/projects/project/${updatedProject._id}`,{
                 method:"PATCH",
                 headers:{
                     "Accept":"application/json",
                     "Content-Type":"application/json",
+                    "Authorization":`Bearer ${token}`
                 },
                 body: JSON.stringify(updatedProject)
             })
@@ -161,4 +175,5 @@ export const useProjectStore = create<ProjectStore>()((set,get)=>({
             
         }
     }
+
 }))
