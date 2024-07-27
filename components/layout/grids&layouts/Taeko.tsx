@@ -38,17 +38,11 @@ const Taeko = ({children,title,buttons}:{
             }}>
                 {buttons}
             </Stack>
-            
-            <Box {...{
-                overflow:{
-                    xs:"scroll",
-                    sm:"scroll",
-                    md:"visible",
-                },
-                pt:2
-            }}>
-                {children}
-            </Box>
+
+            <>
+            {children}
+            </>
+
         </Box>
         </>
     );

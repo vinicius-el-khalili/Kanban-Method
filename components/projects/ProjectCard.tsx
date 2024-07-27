@@ -40,12 +40,12 @@ const ProjectCard = ({project}:{
                             alignItems:"center"
                         }}>
 
-                            <Typography variant="h6" sx={{display:"flex",alignItems:"center",gap:1.5}}>
+                            <Typography sx={{display:"flex",alignItems:"center",gap:1.5}}>
                                 <Checklist/> {project.title}
                             </Typography>
                             <AvatarGroup>
                                 {project.contributors.map((contributor,i)=>(
-                                    <Avatar>
+                                    <Avatar {...{sx:{height:30,width:30}}}>
                                         {contributor.username[0]}
                                     </Avatar>
                                 ))}

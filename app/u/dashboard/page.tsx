@@ -27,42 +27,22 @@ const Page = () => {
             title:<Typography variant="h4">Lists</Typography>,
             buttons:[<CreateProject/>]
         }}>
-
             <Box {...{
-                display:{xs:"none",sm:"none",md:"grid"},
-                gridTemplateColumns:"1fr 1fr",
-                gap:2,
-            }}>
-                <Typography {...{
-                    variant:"h5" ,
-                }}>
-                    owned
-                </Typography>
-                <Typography {...{
-                    variant:"h5" ,
-                }}>
-                    shared
-                </Typography>
-            </Box>
+                border:"1px solid yellow",
 
-
-            <Box {...{
                 display:"grid",
                 gridTemplateColumns:{
                     sm:"1fr",
                     md:"1fr 1fr",
                 },
-                gridTemplateRows:{
-                    sm:"1fr",
-                    md:"1fr",
-                },
+                
                 gap:2,
-                height:{
-                    sm:"fit-content",
-                    md:"100%",
-                },
-                overflow:"hidden",
-                pb:7
+                height:"100%",
+                overflow:{
+                    sm:"scroll",
+                    md:"hidden"
+                }
+                
             }}>
 
                 <Box {...{display:{sm:"block",md:"none"}}}>
@@ -72,9 +52,10 @@ const Page = () => {
                 </Box>
 
                 <Box {...{
-                    overflow:"hidden",
+                    border:"1px solid red",
                     height:"100%",
-                    sx:{overflowY:"scroll"},
+                    width:"100%",
+                    sx:{overflowY:{sm:"visible",md:"scroll"}},
                     pt:1,pb:1
                 }}>
                     <Stack {...{
@@ -95,9 +76,10 @@ const Page = () => {
                 </Box>
 
                 <Box {...{
-                    overflow:"hidden",
+                    border:"1px solid red",
+                    overflow:{sm:"visible",md:"hidden"},
                     height:"100%",
-                    sx:{overflowY:"scroll"},
+                    sx:{overflowY:{sm:"visible",md:"scroll"}},
                     pt:1,pb:1
                 }}>
                     <Stack {...{
