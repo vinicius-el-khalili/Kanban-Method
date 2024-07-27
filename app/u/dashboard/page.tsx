@@ -29,26 +29,48 @@ const Page = () => {
         }}>
 
             <Box {...{
-                display:"grid",
+                display:{xs:"none",sm:"none",md:"grid"},
                 gridTemplateColumns:"1fr 1fr",
                 gap:2,
-                pb:1,
             }}>
-                <Typography variant="h5">owned</Typography>
-                <Typography variant="h5">shared</Typography>
-                <Divider/>
-                <Divider/>
+                <Typography {...{
+                    variant:"h5" ,
+                }}>
+                    owned
+                </Typography>
+                <Typography {...{
+                    variant:"h5" ,
+                }}>
+                    shared
+                </Typography>
             </Box>
 
 
             <Box {...{
                 display:"grid",
-                gridTemplateColumns:"1fr 1fr",
+                gridTemplateColumns:{
+                    sm:"1fr",
+                    md:"1fr 1fr",
+                },
+                gridTemplateRows:{
+                    sm:"1fr",
+                    md:"1fr",
+                },
                 gap:2,
-                height:"100%",
+                height:{
+                    sm:"fit-content",
+                    md:"100%",
+                },
                 overflow:"hidden",
                 pb:7
             }}>
+
+                <Box {...{display:{sm:"block",md:"none"}}}>
+                    <Typography {...{variant:"h5"}}>
+                        owned
+                    </Typography>
+                </Box>
+
                 <Box {...{
                     overflow:"hidden",
                     height:"100%",
@@ -64,6 +86,12 @@ const Page = () => {
                             <ProjectCard key={`prj_crd${i}`} {...{project}}/>
                         )).reverse()}
                     </Stack>
+                </Box>
+
+                <Box {...{display:{sm:"block",md:"none"}}}>
+                    <Typography {...{variant:"h5"}}>
+                        shared
+                    </Typography>
                 </Box>
 
                 <Box {...{

@@ -26,14 +26,10 @@ const Taeko = ({children,title,buttons}:{
 
             <Typography {...{
                 variant:"h4",
-                sx:{
-                    pb:2
-                }
+                sx:{pb:2}
             }}>
                 {title}
             </Typography>
-
-
 
             <Stack {...{
                 direction:"row",
@@ -44,7 +40,11 @@ const Taeko = ({children,title,buttons}:{
             </Stack>
             
             <Box {...{
-                overflow:"hidden",
+                overflow:{
+                    xs:"scroll",
+                    sm:"scroll",
+                    md:"visible",
+                },
                 pt:2
             }}>
                 {children}
