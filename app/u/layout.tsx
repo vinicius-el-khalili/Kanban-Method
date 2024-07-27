@@ -36,7 +36,7 @@ const Layout = ({children}:{
 
     return (
         <>
-        <Box height="100%" pl={30}> 
+        <Box {...{height:"100%",pl:{xs:0,sm:30,md:30}}}> 
         <SideBar/>
             {authenticated&&children}
         </Box>

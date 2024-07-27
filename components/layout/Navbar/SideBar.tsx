@@ -20,10 +20,9 @@ const SideBar = () => {
         <>
         <Drawer
           variant="permanent"
-          ModalProps={{
-            keepMounted: false,
-          }}
-          open
+          ModalProps={{keepMounted:false}}
+          open={true}
+          sx={{display:{xs:"none",sm:"block"}}}
         >
             <Toolbar sx={{height:"100%"}}>
                 <Stack justifyContent={"space-between"} height={"100%"}>
