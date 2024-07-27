@@ -73,7 +73,7 @@ export const useProjectStore = create<ProjectStore>()((set,get)=>({
                 }]
             }
             
-            const res = await fetch("/api/projects",{
+            const res = await fetch("/api/projects/project",{
                 method:"POST",
                 headers:{
                     "Accept":"application/json",
