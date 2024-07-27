@@ -20,7 +20,7 @@ export async function GET(req:NextRequest,{params}:{params:{taskId:string}}){
         // check if user is owner/contributor
         const isOwner = task.user_id==payload._id
         const isContributor = task.contributors.some( c => c.user_id==payload._id )
-        if(!isOwner&&!isContributor){ return NextResponse.json("unauthorized"),{status:401} }
+        if(!isOwner&&!isContributor){ return NextResponse.json("unauthorized",{status:401}) }
 
         return NextResponse.json(task)
     
