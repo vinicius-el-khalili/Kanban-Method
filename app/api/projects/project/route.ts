@@ -12,6 +12,11 @@ export async function POST (req:NextRequest){
         if(!payload){ return NextResponse.json("bad token",{status:400}) }
         
         const newProject:ProjectSchema = await req.json()
+
+        // check user authenticity
+        const isOwner = newProject.user_id == payload._id
+        if(!isOwner){ return NextResponse.json("unauthorized",{status:401}) }
+
         const project = await Project.create(newProject)
         return NextResponse.json(project)
 
