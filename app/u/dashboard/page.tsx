@@ -29,13 +29,12 @@ const Page = () => {
         }}>
             <Box {...{
                 border:"1px solid yellow",
-
                 display:"grid",
                 gridTemplateColumns:{
                     sm:"1fr",
                     md:"1fr 1fr",
                 },
-                
+                gridTemplateRows:"auto 1fr",
                 gap:2,
                 height:"100%",
                 sx:{
@@ -49,10 +48,12 @@ const Page = () => {
             }}>
 
                 <Box {...{
+                    border:"1px solid green",
                     display:{xs:"none",sm:"none",md:"grid"},
                     gap:2,
                     gridColumn:"span 2",
-                    gridTemplateColumns:"1fr 1fr",
+                    gridTemplateColumns:"auto auto",
+                    height:"fit-content",
                     alignItems:"center",
                     alignContent:"center"
                 }}>
