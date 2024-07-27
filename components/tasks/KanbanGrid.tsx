@@ -27,8 +27,8 @@ const KanbanGrid = () => {
             selectedTaskID={selectedTaskID}
             set_selectedTaskID={set_selectedTaskID}
             title={
-                <Typography color="GrayText">
-                    <HourglassBottom color="inherit"/>
+                <Typography variant="body2">
+                    {tasks?.filter(t=>t.status==2).length}/{tasks?.length}
                 </Typography>
             } 
             tasks={tasks}/>
@@ -78,7 +78,6 @@ const Column = ({title,tasks,selectedTaskID,set_selectedTaskID}:{
                 justifyContent:"center",
                 textAlign:"center",
                 sx:{
-                    pt:1,
                     borderRadius:1,
                 }
             }}>
@@ -87,7 +86,6 @@ const Column = ({title,tasks,selectedTaskID,set_selectedTaskID}:{
             </Paper>
 
             <Box {...{
-                border:"1px solid yellow",
                 sx:{overflowY:"scroll"},
                 height:"100%",
                 pt:.4,

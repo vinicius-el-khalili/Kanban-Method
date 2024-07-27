@@ -34,9 +34,23 @@ const Page = ({ params }: { params: { project_id: string } }) => {
                 {`Lists/ `}
             </Typography>
             <Typography {...{
+                sx:{display:{xs:"none",sm:"none",md:"flex"},alignItems:"center",gap:2,mb:2},
                 variant:"h4" ,
                 color:"primary" ,
-                sx:{display:"flex",alignItems:"center",gap:2,mb:2},
+            }}>
+                <Checklist fontSize="large"/> {selectedProject.title}
+            </Typography>
+            <Typography {...{
+                sx:{display:{xs:"none",sm:"flex",md:"none"},alignItems:"center",gap:2,mb:2},
+                variant:"h5",
+                color:"primary" ,
+            }}>
+                <Checklist fontSize="large"/> {selectedProject.title}
+            </Typography>
+            <Typography {...{
+                sx:{display:{xs:"flex",sm:"none",md:"none"},alignItems:"center",gap:2,mb:2},
+                variant:"h6",
+                color:"primary" ,
             }}>
                 <Checklist fontSize="large"/> {selectedProject.title}
             </Typography>

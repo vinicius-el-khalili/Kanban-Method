@@ -76,7 +76,7 @@ const CreateTask = () => {
 
                     <Stack direction="column" alignItems="center">
                         <Typography color="GrayText" variant="body2" textAlign="end">
-                            Task Lists/
+                            Lists/
                         </Typography>
                         <Typography color="primary" textAlign="end" variant="body1">
                             {`${selectedProject?.title}`}
@@ -102,6 +102,7 @@ const CreateTask = () => {
                     disabled={input.length<3}
                     type="submit"
                     variant="contained" 
+                    color="success"
                     startIcon={<Add/>}>
                         Add
                     </Button>

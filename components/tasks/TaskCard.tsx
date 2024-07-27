@@ -56,7 +56,7 @@ const TaskCard = ({task,selectedTaskID,set_selectedTaskID}:{
                         }}>
                             {task.status==0&&
                             <HourglassBottom {...{
-                                color:"info",
+                                color:"inherit",
                                 sx:{height:18,width:18,opacity:.5},
                             }}/>}
                             {task.status==1&&
@@ -67,7 +67,7 @@ const TaskCard = ({task,selectedTaskID,set_selectedTaskID}:{
                             {task.status==2&&
                             <Check {...{
                                 color:"success",
-                                sx:{height:18,width:18},
+                                sx:{height:18,width:18,border:"1px solid"},
                             }}/>}
                         </Box>
 
@@ -120,7 +120,7 @@ const TaskCard = ({task,selectedTaskID,set_selectedTaskID}:{
                     onClick:()=>setStatus(2),
                     disabled:task.status==2,
                     color:"success",
-                    size:"small"
+                    size:"small",
                 }}>
                     <Check/>
                 </IconButton>
