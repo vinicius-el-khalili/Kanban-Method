@@ -28,7 +28,6 @@ const Page = () => {
             buttons:[<CreateProject/>]
         }}>
             <Box {...{
-                border:"1px solid yellow",
                 display:"grid",
                 gridTemplateColumns:{
                     sm:"1fr",
@@ -48,7 +47,6 @@ const Page = () => {
             }}>
 
                 <Box {...{
-                    border:"1px solid green",
                     display:{xs:"none",sm:"none",md:"grid"},
                     gap:2,
                     gridColumn:"span 2",
@@ -72,7 +70,6 @@ const Page = () => {
                 </Box>
 
                 <Box {...{
-                    border:"1px solid red",
                     height:"100%",
                     width:"100%",
                     sx:{overflowY:{sm:"visible",md:"scroll"}},
@@ -96,7 +93,6 @@ const Page = () => {
                 </Box>
 
                 <Box {...{
-                    border:"1px solid red",
                     overflow:{sm:"visible",md:"hidden"},
                     height:"100%",
                     sx:{overflowY:{sm:"visible",md:"scroll"}},
