@@ -50,7 +50,7 @@ export const useTaskStore = create<TaskStore>()((set,get)=>({
 
             const token = useAuthStore.getState().store.token
             if(!token){ return false }
-            const res = await fetch("/api/tasks",{
+            const res = await fetch(`/api/projects/project/${newTask.project_id}/tasks`,{
                 method:"POST",
                 headers:{
                     "Accept":"application/json",

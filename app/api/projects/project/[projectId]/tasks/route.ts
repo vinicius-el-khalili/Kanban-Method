@@ -29,7 +29,29 @@ export async function GET(req:NextRequest,{params}:{params:{projectId:string}}){
         return NextResponse.json(tasks)
  
     }catch(err:any){
+
         return NextResponse.json({error:err.message},{status:500})
+
     }
 
+}
+
+export async function POST(req:NextRequest,{params}:{params:{projectId:string}}){
+
+    await dbConnect()
+    try{
+
+        const payload = validateTokenizedRequest(req)
+        if(!payload){ return NextResponse.json("bad token",{status:400}) }
+        const {projectId} = params
+
+        const newTask:TaskSchema = await req.json()
+        const task:TaskSchema&MongoDocument = await Task.create(newTask)
+        return NextResponse.json(task)
+
+    }catch(err:any){
+
+        return NextResponse.json({error:err.message},{status:500})
+
+    }
 }
