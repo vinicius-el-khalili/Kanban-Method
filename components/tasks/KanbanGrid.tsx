@@ -15,9 +15,13 @@ const KanbanGrid = () => {
         <>
         <Box {...{
             display:"grid",
-            gridTemplateColumns:"repeat(3,1fr)",
+            gridTemplateColumns:{
+                sm:"1fr",
+                md:"repeat(2,1fr)",
+            },
             height:"100%",
-            gap:4
+            gap:4,
+            overflow:"hidden"
         }}>
             <Column 
             selectedTaskID={selectedTaskID}
@@ -27,7 +31,7 @@ const KanbanGrid = () => {
                     <HourglassBottom color="inherit"/>
                 </Typography>
             } 
-            tasks={!tasks?[]:tasks.filter(task=>task.status==0)}/>
+            tasks={tasks}/>
 
             {/* <Column 
             selectedTaskID={selectedTaskID}
@@ -35,7 +39,7 @@ const KanbanGrid = () => {
             title={<>doing</>} 
             tasks={!tasks?[]:tasks.filter(task=>task.status==1)}/> */}
 
-            <Column 
+            {/* <Column 
             selectedTaskID={selectedTaskID}
             set_selectedTaskID={set_selectedTaskID}
             title={
@@ -43,7 +47,7 @@ const KanbanGrid = () => {
                     <Check color="inherit"/>
                 </Typography>
             } 
-            tasks={!tasks?[]:tasks.filter(task=>task.status==2)}/>
+            tasks={!tasks?[]:tasks.filter(task=>task.status==2)}/> */}
 
         </Box>
         </>
@@ -68,7 +72,7 @@ const Column = ({title,tasks,selectedTaskID,set_selectedTaskID}:{
             overflow:"hidden",
             gap:1
         }}>
-            <Paper elevation={0}>
+            <Paper elevation={5}>
             <Typography {...{
                 fontSize:"large",
                 justifyContent:"center",
@@ -83,6 +87,7 @@ const Column = ({title,tasks,selectedTaskID,set_selectedTaskID}:{
             </Paper>
 
             <Box {...{
+                border:"1px solid yellow",
                 sx:{overflowY:"scroll"},
                 height:"100%",
                 pt:.4,
