@@ -8,6 +8,8 @@ import CreateProject from "@/components/projects/CreateProject";
 import ProjectCard from "@/components/projects/ProjectCard";
 import Taeko from "@/components/layout/grids&layouts/Taeko";
 import { Checklist } from "@mui/icons-material";
+import MyTabs from "@/components/layout/lists-page/MyTabs";
+import ProjectList from "@/components/projects/ProjectList";
 
 const Page = () => {
 
@@ -27,100 +29,15 @@ const Page = () => {
             title:<Typography variant="h4">Lists</Typography>,
             buttons:[<CreateProject/>]
         }}>
-            <Box {...{
-                display:"grid",
-                gridTemplateColumns:{
-                    xs:"1fr",
-                    sm:"1fr",
-                    md:"1fr 1fr",
-                },
-                gridTemplateRows:{
-                    xs:"auto auto auto auto",
-                    sm:"auto auto auto auto",
-                    md:"auto 1fr"
-                },
-                gap:2,
-                height:{
-                    xs:"fit-content",
-                    sm:"fit-content",
-                    md:"100%"
-                },
-                sx:{
-                    overflowY:{
-                        sm:"scroll",
-                        md:"hidden"
-                    },
-                    overflowX:"hidden"
-                },
-                
-            }}>
-
-                <Box {...{
-                    display:{xs:"none",sm:"none",md:"grid"},
-                    gap:2,
-                    gridColumn:"span 2",
-                    gridTemplateColumns:"auto auto",
-                    height:"fit-content",
-                    alignItems:"center",
-                    alignContent:"center"
-                }}>
-                    <Typography {...{variant:"h5"}}>
-                        owned
-                    </Typography>
-                    <Typography {...{variant:"h5"}}>
-                        shared
-                    </Typography>
-                </Box>
-
-                <Box {...{
-                    display:{xs:"block",sm:"block",md:"none"} 
-                }}>
-                    <Typography {...{variant:"h5"}}>
-                        owned
-                    </Typography>
-                </Box>
-
-                <Box {...{
-                    height:{xs:"auto",sm:"auto",md:"fit-content"},
-                    width:"100%",
-                    sx:{overflowY:{sm:"visible",md:"scroll"}},
-                    pt:1,pb:1
-                }}>
-                    <Stack {...{
-                        spacing:1
-                    }}>
-                        {projects&&
-                        projects.filter(proj=>proj.user_id==user_id)
-                        .map((project,i)=>(
-                            <ProjectCard key={`prj_crd${i}`} {...{project}}/>
-                        )).reverse()}
-                    </Stack>
-                </Box>
-
-                <Box {...{display:{sm:"block",md:"none"}}}>
-                    <Typography {...{variant:"h5"}}>
-                        shared
-                    </Typography>
-                </Box>
-
-                <Box {...{
-                    overflow:{sm:"visible",md:"hidden"},
-                    height:"100%",
-                    sx:{overflowY:{sm:"visible",md:"scroll"}},
-                    pt:1,pb:1
-                }}>
-                    <Stack {...{
-                        spacing:1
-                    }}>
-                        {projects&&
-                        projects.filter(proj=>proj.user_id!=user_id)
-                        .map((project,i)=>(
-                            <ProjectCard key={`prj_crd${i}`} {...{project}}/>
-                        )).reverse()}
-                    </Stack>
-                </Box>
-            </Box>
-
+            <MyTabs {...{
+                panels:[{
+                    label:"Owned",
+                    children:<ProjectList projects={projects?projects.filter(proj=>proj.user_id==user_id):[]}/>
+                },{
+                    label:"Shared",
+                    children:<ProjectList projects={projects?projects.filter(proj=>proj.user_id!=user_id):[]}/>
+                }],
+            }}/>                
         </Taeko>
 
     );
