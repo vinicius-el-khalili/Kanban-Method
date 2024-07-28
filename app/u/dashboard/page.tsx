@@ -7,9 +7,10 @@ import { useEffect } from "react";
 import CreateProject from "@/components/projects/CreateProject";
 import ProjectCard from "@/components/projects/ProjectCard";
 import Taeko from "@/components/layout/grids&layouts/Taeko";
-import { Checklist } from "@mui/icons-material";
+import { Check, Checklist } from "@mui/icons-material";
 import MyTabs from "@/components/layout/lists-page/MyTabs";
 import ProjectList from "@/components/projects/ProjectList";
+import TaekoTitle from "@/components/layout/grids&layouts/TaekoTitle";
 
 const Page = () => {
 
@@ -26,7 +27,11 @@ const Page = () => {
     return (
 
         <Taeko {...{
-            title:<Typography variant="h4">Lists</Typography>,
+            title:<TaekoTitle {...{
+                title:"lists",
+                subtitle:"/",
+                icon:<Checklist/>
+            }}/>,
             buttons:[<CreateProject/>]
         }}>
             <MyTabs {...{

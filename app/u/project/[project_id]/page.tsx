@@ -1,6 +1,7 @@
 "use client"
 
 import Taeko from "@/components/layout/grids&layouts/Taeko";
+import TaekoTitle from "@/components/layout/grids&layouts/TaekoTitle";
 import AddContributorToProject from "@/components/projects/AddContributorToProject";
 import CreateTask from "@/components/tasks/CreateTask";
 import KanbanGrid from "@/components/tasks/KanbanGrid";
@@ -30,31 +31,14 @@ const Page = ({ params }: { params: { project_id: string } }) => {
         <Taeko 
         title={
             <>
-            <Typography color="GrayText">
-                {`Lists/ `}
-            </Typography>
-            <Typography {...{
-                sx:{display:{xs:"none",sm:"none",md:"flex"},alignItems:"center",gap:2,mb:2},
-                variant:"h4" ,
-                color:"primary" ,
+            <TaekoTitle {...{
+                title:selectedProject.title,
+                subtitle:"/lists/",
+                icon:<Checklist/>,
+            }}/>
+            <AvatarGroup {...{
+                sx:{justifyContent:"start"}
             }}>
-                <Checklist fontSize="large"/> {selectedProject.title}
-            </Typography>
-            <Typography {...{
-                sx:{display:{xs:"none",sm:"flex",md:"none"},alignItems:"center",gap:2,mb:2},
-                variant:"h5",
-                color:"primary" ,
-            }}>
-                <Checklist fontSize="large"/> {selectedProject.title}
-            </Typography>
-            <Typography {...{
-                sx:{display:{xs:"flex",sm:"none",md:"none"},alignItems:"center",gap:2,mb:2},
-                variant:"h6",
-                color:"primary" ,
-            }}>
-                <Checklist fontSize="large"/> {selectedProject.title}
-            </Typography>
-            <AvatarGroup sx={{justifyContent:"start"}}>
                 {selectedProject.contributors.map((contributor,i)=>(
                     <Avatar>
                         {contributor.username[0]}
