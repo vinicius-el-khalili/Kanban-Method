@@ -30,12 +30,21 @@ const Page = () => {
             <Box {...{
                 display:"grid",
                 gridTemplateColumns:{
+                    xs:"1fr",
                     sm:"1fr",
                     md:"1fr 1fr",
                 },
-                gridTemplateRows:"auto 1fr",
+                gridTemplateRows:{
+                    xs:"auto auto auto auto",
+                    sm:"auto auto auto auto",
+                    md:"auto 1fr"
+                },
                 gap:2,
-                height:"100%",
+                height:{
+                    xs:"fit-content",
+                    sm:"fit-content",
+                    md:"100%"
+                },
                 sx:{
                     overflowY:{
                         sm:"scroll",
@@ -63,14 +72,16 @@ const Page = () => {
                     </Typography>
                 </Box>
 
-                <Box {...{display:{xs:"block",sm:"block",md:"none"}}}>
+                <Box {...{
+                    display:{xs:"block",sm:"block",md:"none"} 
+                }}>
                     <Typography {...{variant:"h5"}}>
                         owned
                     </Typography>
                 </Box>
 
                 <Box {...{
-                    height:"100%",
+                    height:{xs:"auto",sm:"auto",md:"fit-content"},
                     width:"100%",
                     sx:{overflowY:{sm:"visible",md:"scroll"}},
                     pt:1,pb:1
