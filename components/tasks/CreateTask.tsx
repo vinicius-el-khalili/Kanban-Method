@@ -3,8 +3,8 @@
 import { useAuthStore } from "@/store/Auth/AuthStore";
 import { useProjectStore } from "@/store/Projects/ProjectStore";
 import { useTaskStore } from "@/store/Tasks/TaskStore";
-import { Add } from "@mui/icons-material";
-import { Button, Card, Modal, Stack, TextareaAutosize, Typography } from "@mui/material";
+import { Add, AddTask, Edit, PlusOne, PlusOneOutlined, PlusOneRounded, PlusOneSharp } from "@mui/icons-material";
+import { Box, Button, Card, IconButton, Modal, Stack, TextField, TextareaAutosize, Typography } from "@mui/material";
 import { FormEvent, useState } from "react";
 import MyTextarea from "../layout/grids&layouts/MyTextarea";
 
@@ -20,7 +20,7 @@ const CreateTask = () => {
 
     const handleSubmit = async (e:FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        
+
         if(!user||!selectedProject){ 
             return
         }
@@ -72,40 +72,39 @@ const CreateTask = () => {
                 }
             }}>
             <form onSubmit={handleSubmit}>
-                <Stack spacing={3}>
+                <Stack spacing={2}>
 
-                    <Stack direction="column" alignItems="center">
-                        <Typography color="GrayText" variant="body2" textAlign="end">
+                    <Stack {...{direction:"column",alignItems:"center"}}>
+                        <Typography {...{color:"GrayText",variant:"body2",textAlign:"end"}}>
                             Lists/
                         </Typography>
-                        <Typography color="primary" textAlign="end" variant="body1">
+                        <Typography {...{color:"primary",textAlign:"end",variant:"body1"}}>
                             {`${selectedProject?.title}`}
                         </Typography>
                     </Stack>
 
-                    <Typography fontWeight="light" variant="h6" textAlign="center">
-                        Add Task
-                    </Typography>
-                    
-                    <MyTextarea
-                        value={input}
-                        onChange={e=>set_input(e.target.value)}
-                    />
-                    
-                    {/* <TextField
-                        label="Description" 
-                        variant="standard"
-                        
-                    /> */}
+                    <Stack {...{spacing:2,pt:4}}>
 
-                    <Button 
-                    disabled={input.length<3}
-                    type="submit"
-                    variant="contained" 
-                    color="success"
-                    startIcon={<Add/>}>
-                        Add
-                    </Button>
+                        <TextField {...{
+                            value:input,
+                            onChange:e=>set_input(e.target.value),
+                            label:"New Task",
+                            placeholder:"Task description",
+                            variant:"outlined",
+                            autoFocus:true
+                        }}/>
+
+                        <Button {...{
+                            disabled:input.length<3,
+                            type:"submit",
+                            variant:"contained",
+                            color:"success",
+                            startIcon:<Add/>
+                        }}>
+                            Add
+                        </Button>
+
+                    </Stack>                    
 
                 </Stack>
             </form>  

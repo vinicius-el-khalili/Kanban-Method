@@ -15,7 +15,6 @@ const MyTabs = ({panels}:{
         <>
         <Box {...{
             sx:{
-                bgcolor:"background.paper",
                 overflow:"hidden"
             },
             display:"grid",
@@ -29,6 +28,7 @@ const MyTabs = ({panels}:{
             <Tabs {...{
                 value:tab,
                 onChange:(e,v)=>{set_tab(v)},
+                
             }}>
                 {panels.map((panel,i)=>(
                    <Tab {...{label:panel.label,value:i}} key={`tab${i}`}/> 

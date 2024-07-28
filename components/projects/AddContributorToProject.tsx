@@ -74,63 +74,72 @@ const AddContributorToProject = () => {
                     p:6
                 }
             }}>
-                <Stack spacing={4} maxWidth={300}>
+                <Stack spacing={1}>
 
                     <Stack direction="column" alignItems="center">
                         <Typography color="GrayText" variant="body2" textAlign="end">
-                            Task Lists/
+                            Lists/
                         </Typography>
                         <Typography color="primary" textAlign="end" variant="body1">
                             {`${selectedProject?.title}`}
                         </Typography>
                     </Stack>
 
-                    <Typography fontWeight="light" variant="h6" textAlign="center">
+                    {/* <Typography fontWeight="light" variant="h6" textAlign="center">
                         Add Contributor
-                    </Typography>
+                    </Typography> */}
 
-                    <TextField
-                        label="User login" 
-                        variant="standard"
-                        value={input?input:""}
-                        onChange={onChange}
-                        color={contributor?"success":warning?"error":"primary"}
-                        helperText={
-                            <Typography fontWeight="bold" color="error">
-                                {warning}
-                            </Typography>
-                        }
-                        focused={(!!warning||!!contributor)?true:undefined}
-                    />
+                    <Stack {...{spacing:2,pt:4}}>
+                        <TextField
+                            label="New Contributer"
+                            placeholder="Contributor login"
+                            autoComplete={""}
+                            variant="outlined"
+                            value={input?input:""}
+                            onChange={onChange}
+                            color={contributor?"success":warning?"error":"primary"}
+                            helperText={
+                                <Typography fontWeight="bold" color="error">
+                                    {warning}
+                                </Typography>
+                            }
+                            focused={(!!warning||!!contributor)?true:undefined}
+                            autoFocus
+                        />
 
-                    {!contributor&&
-                    <Button
-                    onClick={handleSearch}
-                    type="submit"
-                    variant="outlined" 
-                    startIcon={<Search/>}
-                    disabled={!input||input?.length<3}>
-                    </Button>}
+                        {!contributor&&
+                        <Button
+                        onClick={handleSearch}
+                        type="submit"
+                        variant="contained" 
+                        color="info"
+                        startIcon={<Search/>}
+                        disabled={!input||input?.length<3}>
+                        </Button>}
+                        
+                        {contributor&&
+                        <Box {...{
+                            display:"grid",
+                            gridTemplateColumns:"auto 1fr",
+                            alignItems:"center",
+                            gap:2,
+                            pl:1,pr:1,pt:0,pb:2
+                        }}>
+                        <Avatar>{contributor.username[0]}</Avatar> 
+                        <Typography>{contributor.username}</Typography>
+                        </Box>}
+
+                        {contributor&&
+                        <Button
+                        onClick={handleSubmit}
+                        type="submit"
+                        variant="contained"
+                        color="success"
+                        startIcon={<Add/>}>
+                            add contributor
+                        </Button>}
                     
-                    {contributor&&
-                    <Box {...{
-                        display:"grid",
-                        gridTemplateColumns:"auto 1fr",
-                        alignItems:"center",
-                        gap:2
-                    }}>
-                       <Avatar>{contributor.username[0]}</Avatar> 
-                       <Typography>{contributor.username}</Typography>
-                    </Box>}
-
-                    {contributor&&
-                    <Button
-                    onClick={handleSubmit}
-                    type="submit"
-                    variant="contained" 
-                    startIcon={<Add/>}>
-                        add contributor
-                    </Button>}
+                    </Stack>
 
                 </Stack>
             </Card>    
